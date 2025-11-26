@@ -1,7 +1,7 @@
 <!-- app/views/story_levels/map.html.erb -->
 <div class="container mt-3">
   <div class="row justify-content-center">
-    <div class="col-md-5">
+    <div class="col-md-4">
       <div class="card shadow">
         <div class="card-body text-center">
           <h1 class="card-title mb-3">Your Journey</h1>
@@ -10,8 +10,8 @@
             <% @story_levels.reverse_each do |level| %>
               <%
                 is_completed = @completed_level_ids.include?(level.id)
-                is_current = level == @current_level
-                is_locked = !@accessible_level_ids.include?(level.id)
+                is_current = level.id == @accessible_level_id
+                is_locked = level.id > @accessible_level_id
               %>
               <div class="p-1 border rounded <%= 'bg-success text-white' if is_completed %> <%= 'bg-danger text-white' if is_current %> <%= 'bg-secondary text-white' if is_locked %>">
                 <% if is_completed %>
