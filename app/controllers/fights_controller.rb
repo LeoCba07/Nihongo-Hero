@@ -5,15 +5,18 @@ class FightsController < ApplicationController
 
   def create
     enemy = Enemy.all.sample
-
-    # HALEY: I've whipped this bad create method up to get to the fight screen so I can work on it.
-    @fight = Fight.create(
-      status: 'active',
+    #Oliver: Update the story level to the next higher level. If this is the first fight, start at 1
+    @story_level = 1
+    @story_level = current_user.fights.last.story_level_id + 1 if current_user.fights.last
+    
+    #Oliver: Create a new fight. Note to self, need to double check each attribute
+    @fight = Fight.new(
+      status: 'active',   #Fights are either active or completed
       user: current_user,
       enemy: enemy,
       player_hitpoints: current_user.hitpoints,
       enemy_hitpoints: enemy.hitpoints,
-      story_level_id: fight_params[:story_level]
+      story_level: StoryLevel.find(@story_level)
     )
 
     if @fight.save
@@ -22,11 +25,5 @@ class FightsController < ApplicationController
       flash[:alert] = @fight.errors.full_messages.join(", ")
       redirect_to map_path
     end
-  end
-
-  private
-
-  def fight_params
-    params.require(:fight).permit(:story_level)
   end
 end
