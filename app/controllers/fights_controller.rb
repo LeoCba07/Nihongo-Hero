@@ -13,7 +13,7 @@ class FightsController < ApplicationController
       enemy: enemy,
       player_hitpoints: current_user.hitpoints,
       enemy_hitpoints: enemy.hitpoints,
-      story_level_id: 1
+      story_level_id: fight_params[:story_level]
     )
 
     if @fight.save
@@ -27,5 +27,6 @@ class FightsController < ApplicationController
   private
 
   def fight_params
+    params.require(:fight).permit(:story_level)
   end
 end
