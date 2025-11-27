@@ -50,5 +50,5 @@ enemies_data.each do |enemy|
 end
 puts 'Generated enemies!'
 
-fight = Fight.create(enemy: Enemy.last, story_level: StoryLevel.last, user: User.last, enemy_hitpoints: 100, player_hitpoints: 100 )
-fight_question = FightQuestion.create(fight: fight, question: Question.last)
+sample_fight = Fight.create(enemy: Enemy.last, story_level: StoryLevel.last, user: User.last, enemy_hitpoints: 100, player_hitpoints: 100 )
+sample_fight_question = FightQuestion.create(fight: fight, question: Question.last)
