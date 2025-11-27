@@ -17,7 +17,7 @@
                 <% if is_completed %>
                   <p class="mb-0">✓ Level <%= level.id %> - Completed</p>
                 <% elsif is_current %>
-                  <%= link_to fights_path(story_level_id: level.id), method: :post, class: "btn btn-light btn-lg w-100" do %>
+                  <%= button_to fights_path, method: :post, class: "btn btn-light btn-lg w-100" do %>
                     <strong>▶ Start Level <%= level.id %></strong>
                   <% end %>
                 <% else %>
