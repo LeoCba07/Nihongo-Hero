@@ -1,19 +1,22 @@
 class FightsController < ApplicationController
-  def show
+  def show     #I can see a list of actions at the start of the fight (attack, ability, item, retreat)
     @fight = Fight.find(params[:id])
+    @fight_questions = @fight.fight_questions
   end
 
   def create
-    enemy = Enemy.all.sample
+    #Oliver: Update the story level to the next higher level. If this is the first fight, start at 1
+    @story_level = 1
+    @story_level = current_user.fights.last.story_level_id + 1 if current_user.fights.last
 
-    # HALEY: I've whipped this bad create method up to get to the fight screen so I can work on it.
-    @fight = Fight.create(
-      status: 'active',
+    enemy = Enemy.all.sample
+    @fight = Fight.new(
+      status: 'active',   #Fights are either active or completed
       user: current_user,
       enemy: enemy,
       player_hitpoints: current_user.hitpoints,
       enemy_hitpoints: enemy.hitpoints,
-      story_level_id: 1
+      story_level: StoryLevel.find(@story_level)
     )
 
     if @fight.save
@@ -22,10 +25,5 @@ class FightsController < ApplicationController
       flash[:alert] = @fight.errors.full_messages.join(", ")
       redirect_to map_path
     end
-  end
-
-  private
-
-  def fight_params
   end
 end
