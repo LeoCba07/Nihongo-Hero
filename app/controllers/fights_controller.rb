@@ -1,15 +1,15 @@
 class FightsController < ApplicationController
-  def show
+  def show     #I can see a list of actions at the start of the fight (attack, ability, item, retreat)
     @fight = Fight.find(params[:id])
+    @fight_questions = @fight.fight_questions
   end
 
   def create
-    enemy = Enemy.all.sample
     #Oliver: Update the story level to the next higher level. If this is the first fight, start at 1
     @story_level = 1
     @story_level = current_user.fights.last.story_level_id + 1 if current_user.fights.last
-    
-    #Oliver: Create a new fight. Note to self, need to double check each attribute
+
+    enemy = Enemy.all.sample
     @fight = Fight.new(
       status: 'active',   #Fights are either active or completed
       user: current_user,
