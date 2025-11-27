@@ -9,7 +9,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  get "map", to: "story_level#map", as: :map
+  get "map", to: "story_levels#map", as: :map
+  # get "results", to: "fights#results", as: :fight_results   <---- Oliver: Do we need this?
   resources :fights, only: [:show, :create, :update] do
     resources :fight_questions, only: [:create, :index, :show]
   end

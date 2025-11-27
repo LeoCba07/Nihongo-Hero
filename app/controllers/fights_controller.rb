@@ -4,4 +4,27 @@ class FightsController < ApplicationController
     @fight_questions = @fight.fight_questions
   end
 
+  def create
+    enemy = Enemy.all.sample
+    #Oliver: Update the story level to the next higher level. If this is the first fight, start at 1
+    @story_level = 1
+    @story_level = current_user.fights.last.story_level_id + 1 if current_user.fights.last
+
+    #Oliver: Create a new fight. Note to self, need to double check each attribute
+    @fight = Fight.new(
+      status: 'active',   #Fights are either active or completed
+      user: current_user,
+      enemy: enemy,
+      player_hitpoints: current_user.hitpoints,
+      enemy_hitpoints: enemy.hitpoints,
+      story_level: StoryLevel.find(@story_level)
+    )
+
+    if @fight.save
+      redirect_to fight_path(@fight)
+    else
+      flash[:alert] = @fight.errors.full_messages.join(", ")
+      redirect_to map_path
+    end
+  end
 end
