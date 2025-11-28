@@ -3,17 +3,13 @@
   <div class="row justify-content-center">
     <div class="col-md-4">
       <!-- Story Content Section -->
-      <div class="card shadow mb-2">
-        <div class="card-body">
-          <h3 class="text-center mb-3">Level <%= @accessible_level_id %></h3>
-          <p class="text-center"><%= @current_level&.story_content %></p>
-        </div>
-      </div>
-      <div class="card shadow">
-        <div class="card-body text-center">
-          <h1 class="card-title mb-3">Your Journey</h1>
-          <div class="d-flex flex-column gap-3">
-            <!-- Reversed for bottom to top display? Might adjust -->
+      <div class="card shadow mb-1" style="position: relative; overflow: hidden;">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('<%= asset_path(@current_level.map_image) %>'); background-size: cover; background-position: center; opacity: 0.50; z-index: 0;"></div>
+        <div class="card-body" style="position: relative; z-index: 1;">
+          <h1 class="card-title text-center mb-2 text-white" style="text-shadow: 6px 2px 4px #000;">Your Journey</h1>
+          <h4 class="text-center mb-1 text-white" style="text-shadow: 6px 2px 4px #000;">Level <%= @accessible_level_id %></h4>
+          <p class="text-center mb-2 text-white" style="text-shadow: 6px 2px 4px #000;"><%= @current_level&.story_content %></p>
+          <div class="d-flex flex-column gap-3 text-center">
             <% @story_levels.reverse_each do |level| %>
               <%
                 is_completed = @completed_level_ids.include?(level.id)
