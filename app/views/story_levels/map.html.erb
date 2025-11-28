@@ -16,6 +16,7 @@
           <p class="text-white lead mb-4 px-2 px-md-4" style="text-shadow: 0 2px 6px black; font-size: 1rem;">
             <%= @current_level&.story_content %>
           </p>
+          <!-- Reversed due to level 1 being bottom -->
           <% @story_levels.reverse_each do |level| %>
             <%
               is_completed = @completed_level_ids.include?(level.id)
