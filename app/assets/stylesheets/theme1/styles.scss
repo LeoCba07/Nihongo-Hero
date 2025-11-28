@@ -1,5 +1,15 @@
 // Many of these are imported directly from AdventureMaker
 
+// REMOVE THIS!
+// DEEEEEBUGGGGGGGG
+// DEBUG - Remove when done
+* {
+  border: 1px solid red !important;
+}
+
+
+
+
 // If we need a card
 .card {
   background-color: $gray-800;
@@ -55,34 +65,35 @@
   background-size: cover;
   background-position: bottom;
   background-repeat: no-repeat;
+
+  overflow: hidden;
 }
 
 .character-container {
   flex: 1; // Each takes 50% width
   display: flex;
-  flex-direction: column; // Sprite on top, healthbar below
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
 }
 
 .sprite-container {
-  flex: 1;
+  // flex: 1;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   padding-bottom: 1rem;
 
   .player-sprite {
-    height: 50vh;
+    height: 30vh;
     max-height: 100%;
     max-width: 100%;
     object-fit: contain;
-    bottom: 1rem;
   }
 
   .enemy-sprite {
-    height: 25vh;
+    height: 10vh;
     max-height: 100%;
     max-width: 100%;
     object-fit: contain;
@@ -91,8 +102,15 @@
 
 
 .healthbar-container {
-  // Style your healthbar here
   width: 100%;
+  margin-bottom: 0.5rem;  // gap between healthbar and sprite
+  color: red;
+
+  // centering text
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  text-align: center;
 }
 
 .textbox-container {
@@ -101,6 +119,8 @@
   left: 0.5rem;
   right: 0.5rem;
   height: 33%;
+
+  font-size: clamp(0.875rem, 5vw, 1.5rem);
 
   background-color: rgba($gray-900, 0.4);
   padding: 1rem;
