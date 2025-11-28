@@ -4,6 +4,20 @@ class FightQuestionsController < ApplicationController
     question_type = params[:question_type]
     used_question_ids = FightQuestion.pluck(:question_id).uniq
 
+    # get questions answered incorrectly
+    incorrect_question_ids = @fight.fight_questions
+      .select{ |fq| fq.selected_index != fq.question.correct_index }
+      .map do |q|
+        q.question_id
+      end
+    # get questions answered correctly
+    correctly_question_ids = @fight.fight_questions
+      .select{ |fq| fq.selected_index == fq.question.correct_index }
+      .map do |q|
+        q.question_id
+      end
+      raise
+
     if question_type == "random"
       @question = Question.all.where.not(id: used_question_ids).sample
     else
