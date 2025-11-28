@@ -1,12 +1,12 @@
 <!-- app/views/story_levels/map.html.erb -->
 <div class="container-fluid mt-2">
   <div class="row justify-content-center">
-    <div class="col-md-4">
+    <div class="col-md-5">
       <!-- Main card -->
       <div class="card shadow-lg border-0"
            style="background: rgba(10, 12, 20, 0.92) url('<%= asset_path(@current_level.map_image) %>') center/cover no-repeat;
                   border: 1px solid #0e2757ff;">
-        <div class="card-body text-center p-5" style="background: rgba(0,0,0,0.45); backdrop-filter: blur(2px); border-radius: 10px;">
+        <div class="card-body text-center p-5" style="background: rgba(0,0,0,0.45); backdrop-filter: blur(1px); border-radius: 10px;">
           <h1 class="display-5 fw-bold text-white mb-3" style="text-shadow: 0 2px 8px black;">
             Your Journey
           </h1>
@@ -24,16 +24,16 @@
             %>
             <div class="mb-3">
               <div class="p-3 rounded border text-center" style="
-                <%= 'background: #189c30ff; color: white; text-shadow: 0 2px 6px black; font-size: 1.2rem;' if is_completed %>
-                <%= 'background: #0e182fff; color: #f0c31eff; border: 2px solid #f0c31eff;' if is_current %>
-                <%= 'background: #3d3d3dff; color: #bebebeff; border: 1px solid #696868ff; text-shadow: 0 2px 6px black; font-size: 1.2rem;' if is_locked %>
+                <%= 'background: #555657ff; color: white; text-shadow: 0 2px 5px black; font-size: 1.3rem;' if is_completed %>
+                <%= 'background: #f0c529ff; border: 2px solid #f0c31eff;' if is_current %>
+                <%= 'background: #2c2b2bff; color: #bebebeff; border: 1px solid #696868ff; text-shadow: 0 2px 5px black; font-size: 1.3rem;' if is_locked %>
               ">
                 <% if is_completed %>
-                  <p class="mb-1">✅ Level <%= level.id %></p>
+                  <p class="mb-1">Level <%= level.id %> - Completed</p>
                 <% elsif is_current %>
                   <%= button_to fights_path, method: :post,
-                      class: "btn btn-lg w-100 fw-bold py-3",
-                      style: "background: #1a2a43ff; color: #f0c31eff; border: 2px solid #f0c31eff; text-shadow: 0 2px 8px black; box-shadow: 0 6px 20px rgba(0,0,0,0.5); font-size: 1.6rem !important; transition: all 0.3s ease;" do %>
+                      class: "btn btn-lg w-100 fw-bold py-2",
+                      style: "background: #91908dff; color: #ffffffff; border: 1px solid #000000ff; text-shadow: 0 2px 8px black; box-shadow: 0 6px 10px rgba(0,0,0,0.5); font-size: 1.4rem !important; transition: all 0.3s ease;" do %>
                     ▶  Level <%= level.id %>
                   <% end %>
                 <% else %>
