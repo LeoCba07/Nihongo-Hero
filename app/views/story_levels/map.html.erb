@@ -1,20 +1,38 @@
 <!-- app/views/story_levels/map.html.erb -->
-<div class="container-fluid px-2 py-2">  <!-- Reduced padding -->
-  <div class="row justify-content-center g-0">  <!-- Remove gutter -->
+<% if flash[:level_10_complete] %>
+  <div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 11; margin-top: 20px;">
+    <div class="toast show" role="alert" data-bs-autohide="true" data-bs-delay="2500"
+         style="background: linear-gradient(135deg, #f0c31eff 0%, #dfc119ff 100%); border: none;">
+      <div class="toast-body text-center fw-bold py-3" style="color: #000;">
+        🎉 Last level Complete!
+      </div>
+    </div>
+  </div>
+<% end %>
+<div class="container-fluid px-2 py-2">
+  <div class="row justify-content-center g-0">
     <div class="col-12 col-sm-10 col-md-8 col-lg-6">
       <!-- Main card -->
       <div class="card shadow-lg border-0"
-           style="background: rgba(10, 12, 20, 0.92) url('<%= asset_path(@current_level.map_image) %>') center/cover no-repeat;
+           style="background: rgba(10, 12, 20, 0.92) <%= "url('#{asset_path(@current_level.map_image)}') center/cover no-repeat" if @current_level %>;
                   border: 1px solid #0e2757ff; min-height: 100vh;">
         <div class="card-body text-center p-4" style="background: rgba(0,0,0,0.45); backdrop-filter: blur(1px); border-radius: 10px;">
           <h1 class="display-6 display-md-5 fw-bold text-white mb-0" style="text-shadow: 0 2px 8px black;">
             Your Journey
           </h1>
           <h4 class="h5 h-md-4 mb-4 mb-md-5" style="color: #f0c31eff;">
-            Level <%= @accessible_level_id %>
+            <% if @all_complete %>
+              All Levels Complete! 🎉
+            <% else %>
+              Level <%= @accessible_level_id %>
+            <% end %>
           </h4>
           <p class="text-white lead mb-4 px-2 px-md-4" style="text-shadow: 0 2px 6px black; font-size: 1rem;">
-            <%= @current_level&.story_content %>
+            <% if @all_complete %>
+              ご苦労様です！
+            <% else %>
+              <%= @current_level.story_content %>
+            <% end %>
           </p>
           <!-- Reversed due to level 1 being bottom -->
           <% @story_levels.reverse_each do |level| %>

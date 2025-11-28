@@ -34,11 +34,11 @@ class FightQuestionsController < ApplicationController
 
     #Check answer and do calculate damage
     if @fight_question.selected_index.to_i == @question.correct_index
-      @damage_dealt = 5
+      @damage_dealt = 100
       @fight.enemy_hitpoints -= @damage_dealt
       flash[:notice] = "正解！ 敵に#{@damage_dealt}ダメージ！"
     else
-      @damage_received = 50
+      @damage_received = 5
       @fight.player_hitpoints -= @damage_received
       flash[:alert] = "不正解！ #{@damage_received}ダメージを受けた！"
     end
