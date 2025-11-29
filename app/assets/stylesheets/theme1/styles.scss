@@ -170,7 +170,6 @@
   gap: 20px;
 }
 
-// The connecting trail line (gray - locked portion)
 .level-path::before {
   content: '';
   position: absolute;
@@ -230,7 +229,6 @@
   color: $accent-gold;
   border: 3px solid $accent-gold;
 
-  // Gold trail connector going DOWN (to next level below)
   &::after {
     content: '';
     position: absolute;
@@ -246,9 +244,23 @@
   }
 }
 
-// Hide connector on last completed
 .level-row:last-child .node-completed::after {
   display: none;
+}
+
+.node-completed.node-final {
+  width: 100px;
+  height: 100px;
+
+  .node-icon {
+    font-size: 2rem;
+  }
+
+  .node-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
 }
 
 // ===== LOCKED NODE =====
@@ -277,23 +289,28 @@
 // ===== FINAL LEVEL (Level 10) =====
 
 .node-final {
-  width: 90px;
-  height: 90px;
+  width: 100px;
+  height: 100px;
   justify-content: center;
-  gap: 2px;
+  gap: 4px;
 }
 
 .node-final .node-icon {
-  font-size: 1.8rem;
+  font-size: 2rem;
+}
+
+.node-final .node-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .node-icon-lock {
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   opacity: 0.5;
   line-height: 1;
 }
 
-// Breathing glow when close (level 7+)
 .node-final-close {
   border: 2px dashed $accent-gold;
   animation: final-breathe 4s ease-in-out infinite;
@@ -306,6 +323,11 @@
   .node-icon-lock {
     color: $accent-gold;
     opacity: 0.6;
+  }
+
+  .node-label {
+    color: $accent-gold;
+    opacity: 0.8;
   }
 }
 
@@ -332,11 +354,10 @@
   align-items: center;
   position: relative;
 
-  // Gold trail going DOWN through bubble and continuing past it
   &::after {
     content: '';
     position: absolute;
-    top: 50px;
+    top: 40px;
     bottom: -28px;
     left: 50%;
     transform: translateX(-50%);
@@ -389,6 +410,22 @@
   }
   50% {
     transform: translateY(-8px);
+  }
+}
+
+.node-current.node-current-final {
+  width: 120px;
+  height: 120px;
+
+  .node-icon {
+    font-size: 2.5rem;
+  }
+
+  .node-label {
+    font-size: 1rem;
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 }
 

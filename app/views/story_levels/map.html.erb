@@ -33,15 +33,27 @@
 
         <div class="level-row">
           <% if is_completed %>
-            <div class="level-node node-completed">
-              <span class="node-icon"><i class="fa-solid fa-star"></i></span>
-              <span class="node-label"><%= level.id %></span>
+            <div class="level-node node-completed <%= 'node-final' if is_final %>">
+              <span class="node-icon">
+                <% if is_final %>
+                  <i class="fa-solid fa-torii-gate"></i>
+                <% else %>
+                  <i class="fa-solid fa-star"></i>
+                <% end %>
+              </span>
+              <span class="node-label"><%= is_final ? 'Complete' : level.id %></span>
             </div>
           <% elsif is_current %>
             <div class="current-level-wrapper" data-scroll-to-current-level-target="current">
-              <%= button_to fights_path, method: :post, class: "level-node node-current" do %>
-                <span class="node-icon"><i class="fa-solid fa-play"></i></span>
-                <span class="node-label"><%= level.id %></span>
+              <%= button_to fights_path, method: :post, class: "level-node node-current #{'node-current-final' if is_final}" do %>
+                <span class="node-icon">
+                  <% if is_final %>
+                    <i class="fa-solid fa-torii-gate"></i>
+                  <% else %>
+                    <i class="fa-solid fa-play"></i>
+                  <% end %>
+                </span>
+                <span class="node-label"><%= is_final ? 'Final' : level.id %></span>
               <% end %>
 
               <div class="story-bubble">
