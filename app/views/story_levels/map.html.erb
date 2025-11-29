@@ -20,7 +20,7 @@
         <% if @all_complete %>
           All Levels Complete! <i class="fa-solid fa-crown"></i>
         <% else %>
-          Level <%= @accessible_level_id %> of <%= @story_levels.count %>
+          Level <%= @accessible_level_id %>
         <% end %>
       </p>
     </div>
@@ -43,7 +43,7 @@
         <div class="level-row">
           <% if is_completed %>
             <div class="level-node node-completed">
-              <span class="node-icon"><i class="fa-solid fa-check"></i></span>
+              <span class="node-icon"><i class="fa-solid fa-star"></i></span>
               <span class="node-label"><%= level.id %></span>
             </div>
           <% elsif is_current %>
