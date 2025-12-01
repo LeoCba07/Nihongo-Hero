@@ -1,17 +1,31 @@
 <% content_for :hide_navbar, true %>
-<nav class="bottom-nav">
-  <%= link_to fights_path, class: "nav-item #{'nav-item-active' if current_page?(fights_path)}" do %>
-    <span class="nav-icon"><i class="fa-solid fa-bookmark"></i></span>
-    <span class="nav-label">Bookmarks</span>
+<div class="container">
+
+  <% @fights.each do |fight| %>
+    <div class="card fight-card my-3 p-3">
+      <button>
+        <h2> Fight <%="#{fight.id} : #{fight.status.capitalize}" %> </h2>
+        <span class="dropdown-arrow">▼</span>
+      </button>
+    </div>
   <% end %>
 
-  <%= link_to map_path, class: "nav-item #{'nav-item-active' if current_page?(map_path)}" do %>
-    <span class="nav-icon"><i class="fa-solid fa-map"></i></span>
-    <span class="nav-label">My Journey</span>
-  <% end %>
 
-  <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-item #{'nav-item-active' if current_page?(destroy_user_session_path)}" do %>
-    <span class="nav-icon"><i class="fa-solid fa-user"></i></span>
-    <span class="nav-label">My Profile</span>
-  <% end %>
-</nav>
+  <nav class="bottom-nav">
+    <%= link_to fights_path, class: "nav-item #{'nav-item-active' if current_page?(fights_path)}" do %>
+      <span class="nav-icon"><i class="fa-solid fa-bookmark"></i></span>
+      <span class="nav-label">Bookmarks</span>
+    <% end %>
+
+    <%= link_to map_path, class: "nav-item #{'nav-item-active' if current_page?(map_path)}" do %>
+      <span class="nav-icon"><i class="fa-solid fa-map"></i></span>
+      <span class="nav-label">My Journey</span>
+    <% end %>
+
+    <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-item #{'nav-item-active' if current_page?(destroy_user_session_path)}" do %>
+      <span class="nav-icon"><i class="fa-solid fa-user"></i></span>
+      <span class="nav-label">My Profile</span>
+    <% end %>
+  </nav>
+
+</div>
