@@ -108,12 +108,6 @@ class FightQuestionsController < ApplicationController
     @fight_questions = @fight.fight_questions.all
 
     #Update level and experience points
-    experience_points
-    #Calculate the percentage of correct questions
-    @percentage_correct = percentage_correct
-  end
-
-  def experience_points
     @current_exp = @user.experience_points
     # Allocate exp points after the fight, based on enemy hp. Maybe change this later to make more sophisticated
     @fight.status == "completed" ? @exp_gained = @fight.enemy.hitpoints : @exp_gained = 0
@@ -123,14 +117,17 @@ class FightQuestionsController < ApplicationController
     @user.experience_points = @current_exp + @exp_gained
     @user.level = @user.experience_points / 100 if @current_exp > 100
     @user.save
-  end
-
-  def percentage_correct
+    #Calculate the percentage of correct questions
     all_count = @fight.fight_questions.all.count
     # @question = @fight.fight_questions
     correct_count = @fight.fight_questions.joins(:question).where('fight_questions.selected_index = questions.correct_index').count
-    return percentage_correct = correct_count.to_f/all_count * 100
+    @percentage_correct = correct_count.to_f/all_count * 100
+
+    # @xp_in_current_level = @user.experience_points % 100
+    @old_exp_percent = (@user.experience_points - @exp_gained) % 100
+    @new_exp_percent = @user.experience_points % 100
   end
+
   private
 
   def fight_question_params
