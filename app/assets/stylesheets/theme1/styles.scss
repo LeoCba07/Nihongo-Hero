@@ -14,6 +14,7 @@
   flex-direction: column;
   padding: 1rem; // Space from edges
   gap: 0.5rem; // Space between buttons
+  overflow: hidden; // Questions menu cant become bigger
 
   form {
     flex: 1;
@@ -36,6 +37,12 @@
   &:hover {
     background-color: $gray-600;
     border-color: $gray-500;
+  }
+
+  &:disabled {
+  background-color: #858f97 !important;
+  border-color: #697279 !important;
+  opacity: 0.65 !important;
   }
 }
 
@@ -119,9 +126,31 @@
 .correct {
   background-color: #22c55e !important;
   border-color: #16a34a !important;
+  transform: scale(1.02);
+  box-shadow: 0 0 12px rgba(34, 197, 94, 0.5);
+  transition: all 0.3s ease;
 }
 
 .incorrect {
   background-color: #ef4444 !important;
   border-color: #dc2626 !important;
+  animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.btn-primary.correct:disabled {
+  background-color: #22c55e !important;
+  border-color: #16a34a !important;
+  opacity: 1 !important;
+}
+
+.btn-primary.incorrect:disabled {
+  background-color: #ef4444 !important;
+  border-color: #dc2626 !important;
+  opacity: 1 !important;
 }

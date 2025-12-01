@@ -27,6 +27,10 @@ export default class extends Controller {
 
     event.preventDefault();
 
+    // Disable all buttons so user can't click anymore
+    this.answerTargets.forEach(button => {
+      button.disabled = true;
+    });
 
     if (isCorrect) {
       // If selected answer is correct -> highlight green
