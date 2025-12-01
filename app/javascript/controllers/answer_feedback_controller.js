@@ -66,7 +66,7 @@ export default class extends Controller {
       this.enemyHealthbarTarget.style.width = `${newPercent}%`
 
       // Update the text
-      this.enemyHealthTextTarget.textContent = `${newEnemyHp} HP`
+      this.enemyHealthTextTarget.textContent = `${newEnemyHp}HP`
 
 
     } else {
@@ -87,7 +87,7 @@ export default class extends Controller {
       const newPlayerHp = this.playerHpValue - this.damageReceivedValue
       const newPercent = (newPlayerHp / this.playerMaxHpValue) * 100
       this.playerHealthbarTarget.style.width = `${newPercent}%`
-      this.playerHealthTextTarget.textContent = `${newPlayerHp} HP`
+      this.playerHealthTextTarget.textContent = `${newPlayerHp}HP`
     }
 
     // Set delay to be longer if answer was incorrect
