@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="answer-feedback"
 export default class extends Controller {
   // Create a target on the button that the user selects
-  static targets = ["answer", "player", "enemy"]
+  static targets = ["answer", "player", "enemy", "enemyHealthbar", "enemyHealthText", "playerHealthbar", "playerHealthText"]
   // Creates getter for @question.correct_index, @damage_dealt & @damage_received
   static values = {
     correctIndex: Number,
