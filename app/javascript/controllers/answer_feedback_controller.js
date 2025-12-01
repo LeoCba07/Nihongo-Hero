@@ -65,7 +65,6 @@ export default class extends Controller {
       // Update the text
       this.enemyHealthTextTarget.textContent = `${newEnemyHp}HP`
 
-
     } else {
       // Find correct button if the answer was wrong
       const correctButton = this.answerTargets.find(button => button.dataset.answerIndex == this.correctIndexValue)
