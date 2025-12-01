@@ -114,3 +114,14 @@
   justify-content: center;
   text-align: center;
 }
+
+// Correct & Incorrect classes for fight questions highlights
+.correct {
+  background-color: #22c55e !important;
+  border-color: #16a34a !important;
+}
+
+.incorrect {
+  background-color: #ef4444 !important;
+  border-color: #dc2626 !important;
+}

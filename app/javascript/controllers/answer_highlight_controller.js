@@ -9,8 +9,6 @@ export default class extends Controller {
     correctIndex: Number
   }
 
-
-
   // Highlight correct answer with green, and wrong answer with red
   highlight(event) {
     // Get the selected answer with index dataset on each button
@@ -22,10 +20,18 @@ export default class extends Controller {
     // console.log("Correct index is:", this.correctIndexValue)
     // console.log("Is the answer correct?:", isCorrect);
 
+
+    // If selected answer is correct -> highlight green
     if (isCorrect) {
+      event.currentTarget.classList.add("correct");
 
+    // If selected answer is incorrect -> highlight red
+    // Additionally correct answer -> highlight green
     } else {
-
+      // Find correct button if the answer was wrong
+      const correctButton = this.answerTargets.find(button => button.dataset.answerIndex == this.correctIndexValue)
+      event.currentTarget.classList.add("incorrect");
+      correctButton.classList.add("correct");
     }
 
   }
