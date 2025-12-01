@@ -14,5 +14,13 @@ class StoryLevelsController < ApplicationController
 
     # Get instance of current level's story
     @current_level = StoryLevel.find_by(id: @accessible_level_id)
+    @all_complete = @current_level.nil?
+    @current_level ||= StoryLevel.last
+
+    # Check if level 10 was just completed
+    if @completed_level_ids.include?(10) && !session[:level_10_notified]
+      flash.now[:level_10_complete] = true
+      session[:level_10_notified] = true  # Prevent showing multiple times
+    end
   end
 end
