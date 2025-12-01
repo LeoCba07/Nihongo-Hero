@@ -4,6 +4,7 @@ class FightQuestionsController < ApplicationController
     question_type = params[:question_type]
     used_question_ids = FightQuestion.pluck(:question_id).uniq
 
+    # This line ensures instances are duplicated but incorrectquestionID will be removed once corrected
     latest_fight_questions = FightQuestion.where( id: FightQuestion.group(:question_id).select('MAX(id)') )
     # get all past questions answered incorrectly in THIS fight
     incorrect_question_ids = latest_fight_questions  # <- this is an array
