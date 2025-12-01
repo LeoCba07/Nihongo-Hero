@@ -309,3 +309,30 @@
     transform: translate(-50%, -100%);
   }
 }
+
+// Player lunges right
+@keyframes lunge {
+  0% { transform: translateX(0); }
+  40% { transform: translateX(50px); }
+  100% { transform: translateX(0); }
+}
+
+// Enemy lunges left (toward player)
+@keyframes lunge-left {
+  0% { transform: translateX(0); }
+  40% { transform: translateX(-40px); }
+  100% { transform: translateX(0); }
+}
+
+.lunge-left {
+  animation: lunge-left 0.5s ease-in-out;
+}
+
+// Shake for enemy sprite when damage dealt
+.shake {
+  animation: shake 0.4s ease;
+}
+
+.lunge {
+  animation: lunge 0.5s ease-in-out;
+}

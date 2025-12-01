@@ -65,6 +65,14 @@ export default class extends Controller {
       // Update the text
       this.enemyHealthTextTarget.textContent = `${newEnemyHp}HP`
 
+      // Player lunges
+      this.playerTarget.querySelector('.player-sprite').classList.add("lunge")
+
+      // Enemy shakes after a small delay
+      setTimeout(() => {
+        this.enemyTarget.querySelector('.enemy-sprite').classList.add("shake")
+      }, 200)
+
     } else {
       // Find correct button if the answer was wrong
       const correctButton = this.answerTargets.find(button => button.dataset.answerIndex == this.correctIndexValue)
@@ -79,11 +87,16 @@ export default class extends Controller {
       event.currentTarget.classList.add("incorrect", "selected");
       correctButton.classList.add("correct");
 
-      // Same block as up before
+      // Same blocks as up before
       const newPlayerHp = this.playerHpValue - this.damageReceivedValue
       const newPercent = Math.max(0, Math.round((newPlayerHp / this.playerMaxHpValue) * 100))
       this.playerHealthbarTarget.style.width = `${newPercent}%`
       this.playerHealthTextTarget.textContent = `${newPlayerHp}HP`
+
+      this.enemyTarget.querySelector('.enemy-sprite').classList.add("lunge-left")
+      setTimeout(() => {
+        this.playerTarget.querySelector('.player-sprite').classList.add("shake")
+      }, 300)
     }
 
     // Set delay to be longer if answer was incorrect
