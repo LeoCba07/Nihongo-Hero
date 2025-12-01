@@ -20,6 +20,7 @@ export default class extends Controller {
     // console.log("Correct index is:", this.correctIndexValue)
     // console.log("Is the answer correct?:", isCorrect);
 
+    event.preventDefault();
 
     // If selected answer is correct -> highlight green
     if (isCorrect) {
