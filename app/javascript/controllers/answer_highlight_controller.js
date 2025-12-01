@@ -13,9 +13,12 @@ export default class extends Controller {
   highlight(event) {
     // Get the selected answer with index dataset on each button
     const selectedIndex = event.currentTarget.dataset.answerIndex
+
     // Compare the selected answer index with the getter of correct index
     const isCorrect = selectedIndex == this.correctIndexValue
-    // Save a reference to the form to find it after the timeout
+
+    // Save a reference to the form to be able to submit after the timeout
+    // Because if I do the timeout and then try to send the event closest form it can't find it anymore
     const form = event.currentTarget.closest('form');
 
     // console.log("Button clicked!")
@@ -24,19 +27,24 @@ export default class extends Controller {
 
     event.preventDefault();
 
-    // If selected answer is correct -> highlight green
+
     if (isCorrect) {
+      // If selected answer is correct -> highlight green
       event.currentTarget.classList.add("correct");
 
-    // If selected answer is incorrect -> highlight red
-    // Additionally correct answer -> highlight green
+
+
     } else {
       // Find correct button if the answer was wrong
       const correctButton = this.answerTargets.find(button => button.dataset.answerIndex == this.correctIndexValue)
+
+      // If selected answer is incorrect -> highlight red
+      // Additionally correct answer -> highlight green
       event.currentTarget.classList.add("incorrect");
       correctButton.classList.add("correct");
     }
 
+    // Wait and then submit the form reference
     setTimeout(() => {
       form.submit();
     }, 3000);
