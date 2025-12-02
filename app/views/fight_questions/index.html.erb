@@ -7,7 +7,7 @@
           <!-- Victory/Defeat Banner -->
           <div class="bg-light rounded p-4 text-center mb-4">
             <h1 class="display-5 mb-0 text-dark">
-              <%= @fight.status == 'completed' ? '勝った！😊' : '負けた...😞' %>
+              <%= @fight.status == 'completed' ? '勝利！😊' : '失敗...😞' %>
             </h1>
           </div>
           <!-- Player Info -->
@@ -103,6 +103,10 @@
             <% end %>
           </div>
         </div>
-        <%= link_to map_path, class: 'btn btn-secondary w-100 py-3 fw-bold' do %>
-          続き
-        <% end %>
+        <div class="results-action">
+          <% if @map_completed %>
+            <%= link_to "マップに戻る", map_path(show_victory: true), class: 'btn btn-secondary w-100 py-3 fw-bold' %>
+          <% else %>
+            <%= link_to "続き", map_path, class: 'btn btn-secondary w-100 py-3 fw-bold'%>
+          <% end %>
+        </div>
