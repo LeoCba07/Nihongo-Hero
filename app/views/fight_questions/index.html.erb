@@ -7,14 +7,14 @@
           <!-- Victory/Defeat Banner -->
           <div class="bg-light rounded p-4 text-center mb-4">
             <h1 class="display-5 mb-0 text-dark">
-              <%= @fight.status == 'completed' ? '勝った！😊' : '負けた...😞' %>
+              <%= @fight.status == 'completed' ? '勝利！😊' : '失敗...😞' %>
             </h1>
           </div>
           <!-- Player Info -->
-          <div class="d-flex align-items-center mb-4"                 
-                data-controller="exp-bar" 
-                data-exp-bar-new-exp-value="<%= @new_exp_percent %>" 
-                data-exp-bar-old-exp-value="<%= @old_exp_percent %>" 
+          <div class="d-flex align-items-center mb-4"
+                data-controller="exp-bar"
+                data-exp-bar-new-exp-value="<%= @new_exp_percent %>"
+                data-exp-bar-old-exp-value="<%= @old_exp_percent %>"
                 data-exp-bar-level-up-value="<%= @level_up %>">
             <div class="rounded-circle bg-secondary d-flex justify-content-center align-items-center text-white" style="width: 50px; height: 50px; min-width: 50px;">
               <span class="fw-bold fs-4" data-exp-bar-target="level"><%= @user.level %></span>
@@ -66,7 +66,7 @@
                       <div class="mb-1 text-dark">
                         <%= truncate(question.question, length: 30) %>
                       </div>
-                      <div class="small text-dark">質問 <%= index + 1 %> - <%= 
+                      <div class="small text-dark">質問 <%= index + 1 %> - <%=
                           if question.question_type == "grammar"
                             "文法"
                           elsif question.question_type == "kanji"
