@@ -1,10 +1,18 @@
 <% content_for :hide_navbar, true %>
 
-<div class="container-fluid vh-100 d-flex flex-column p-0">
+<!-- All data we need for answer_feedback Stimulus controller is being passed here -->
+<div class="container-fluid vh-100 d-flex flex-column p-0" data-controller="answer-feedback"
+  data-answer-feedback-correct-index-value="<%= @question.correct_index %>"
+  data-answer-feedback-damage-dealt-value="<%= 10 * @damage_multiplier %>"
+  data-answer-feedback-damage-received-value="<%= 10 %>"
+  data-answer-feedback-player-hp-value="<%= @fight.player_hitpoints %>"
+  data-answer-feedback-player-max-hp-value="<%= @fight.user.hitpoints %>"
+  data-answer-feedback-enemy-hp-value="<%= @fight.enemy_hitpoints %>"
+  data-answer-feedback-enemy-max-hp-value="<%= @fight.enemy.hitpoints %>">
+  <div id="scene" class="d-flex" data-answer-feedback-target="scene" style="background-image: url('<%= asset_path("backgrounds/#{@fight.story_level.map_image}") %>');">
 
-  <div id="scene" class="d-flex" style="background-image: url('<%= asset_path("backgrounds/#{@fight.story_level.map_image}") %>');">
     <!-- Left side: Player -->
-    <div class="character-container">
+    <div class="character-container" data-answer-feedback-target="player">
       <div class="healthbar-container">
         <%= render 'fights/player_hitpoints' %>
       </div>
@@ -13,7 +21,7 @@
       </div>
     </div>
     <!-- Right side: Enemy -->
-    <div class="character-container">
+    <div class="character-container" data-answer-feedback-target="enemy">
       <div class="healthbar-container">
         <%= render 'fights/enemy_hitpoints' %>
       </div>
