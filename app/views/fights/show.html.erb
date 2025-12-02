@@ -3,7 +3,7 @@
 <div class="container-fluid vh-100 d-flex flex-column p-0">
 
   <%# scene div %>
-  <div id="scene" class="d-flex">
+  <div id="scene" class="d-flex" style="background-image: url('<%= asset_path("backgrounds/#{@fight.story_level.map_image}") %>');">
     <!-- Left side: Player -->
     <div class="character-container">
       <div class="healthbar-container">
