@@ -10,7 +10,8 @@ export default class extends Controller {
   playerHp: Number,
   playerMaxHp: Number,
   enemyHp: Number,
-  enemyMaxHp: Number
+  enemyMaxHp: Number,
+  damageMultiplier: Number
 }
 
   feedback(event) {
