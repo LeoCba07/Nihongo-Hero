@@ -90,7 +90,7 @@
   padding: 1rem;
   position: relative;
 
-  background-image: url('backgrounds/origbig.png');
+  // background-image: url('backgrounds/origbig.png');
   background-size: cover;
   background-position: bottom;
   background-repeat: no-repeat;
@@ -213,17 +213,62 @@
   }
 }
 
+// Damage number stylings
+
 .damage-number {
   position: absolute;
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
-  color: #ec1313;
-  top: 42%; // Might need to play around with this height given the sprites change
+  color: #dc1717;
+  top: 40%;  // Might need to play around with this height given the sprites change
   left: 50%;
   transform: translate(-50%, -50%);
-  animation: float-up 1.7s ease-out forwards;
+  animation: float-up 3s ease-out forwards;
+  z-index: 2;  // ensure it's on top
+  text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
 }
 
+.damage-number.critical {
+  color: #ffcc00;
+  font-size: 3rem;
+}
+
+.damage-number.weak {
+  color: #aaaaaa;
+  font-size: 2rem;
+}
+
+// Effectiveness text popup for dmg
+.effectiveness-text {
+  position: absolute;
+  font-size: 1.8rem;
+  font-weight: bold;
+  top: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1rem 3.4rem;
+  white-space: nowrap;
+  z-index: 10;
+  animation: banner-pop 3.0s ease-out forwards;
+}
+
+.effectiveness-text.super-effective {
+  color: #fff;
+  background: linear-gradient(to right, transparent, rgba(255, 150, 0, 0.85), transparent);
+  border-top: 2px solid #ffcc00;
+  border-bottom: 2px solid #ffcc00;
+  text-shadow: 0 0 10px #ff8800;
+}
+
+.effectiveness-text.not-effective {
+  color: #ddd;
+  background: linear-gradient(to right, transparent, rgba(80, 80, 80, 0.85), transparent);
+  border-top: 2px solid #888;
+  border-bottom: 2px solid #888;
+  text-shadow: 0 0 5px #000;
+}
+
+// Textbox container
 .textbox-container {
   position: absolute;
   bottom: 0.5rem;
@@ -261,14 +306,15 @@
 }
 
 .healthbar-bg {
-  position: relative; // This makes the text position relative to the bar
+  position: relative;
   width: 100%;
   height: 24px;
-  background-color: rgba(rgb(91, 0, 0), 0.6);
-  border: 2px solid rgba($gray-500, 0.5);
+  background-color: #8b0000;
   border-radius: 4px;
   overflow: hidden;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.3),
+    0 0 0 2px rgba($gray-500, 0.5);
 }
 
 .healthbar-fill {
@@ -293,18 +339,15 @@
 
 // ANIMATIONS
 
-// Shake animation for the answer feedback
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  75% { transform: translateX(5px); }
-}
-
 // Float animation for the damage display feedback
 @keyframes float-up {
   0% {
     opacity: 1;
     transform: translate(-50%, -50%);
+  }
+  70% {
+    opacity: 1;
+    transform: translate(-50%, -70%);
   }
   100% {
     opacity: 0;
@@ -312,46 +355,123 @@
   }
 }
 
+// Banner pop for effective/not-effective
+@keyframes banner-pop {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(1.3);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+  75% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.95);
+  }
+}
+
+// Death animations
+@keyframes enemy-death {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  20% {
+    filter: brightness(2) sepia(1) saturate(5) hue-rotate(-20deg);  // red flash
+  }
+  40% {
+    transform: scale(1.05);
+    filter: brightness(1.5);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+    filter: brightness(0.5);
+  }
+}
+
+@keyframes player-death {
+  0% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+    filter: brightness(1);
+  }
+  20% {
+    filter: brightness(2);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px) rotate(-15deg);
+    filter: brightness(0.3);
+  }
+}
+
 // Player sword attack
 @keyframes sword-strike {
   0% { transform: translateX(0); }
-  20% { transform: translateX(-8px); }    // small wind-up
-  60% { transform: translateX(100px); }   // close the gap (adjust this!)
-  75% { transform: translateX(95px); }    // hold at impact
+  20% { transform: translateX(-8px); }
+  60% { transform: translateX(100px); }
+  75% { transform: translateX(95px); }
   100% { transform: translateX(0); }
 }
 
-// Enemy attack
-@keyframes bump-left {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(-15px); }
+// Enemy sword attack
+@keyframes enemy-strike {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(8px); }
+  60% { transform: translateX(-100px); }
+  75% { transform: translateX(-95px); }
+  100% { transform: translateX(0); }
 }
 
-// Enemy knocked back on hit
+// Recoil on hit
 @keyframes hit-recoil {
   0% { transform: translateX(0); }
   40% { transform: translateX(12px); }
   100% { transform: translateX(0); }
 }
 
+@keyframes player-recoil {
+  0% { transform: translateX(0); }
+  40% { transform: translateX(-12px); }
+  100% { transform: translateX(0); }
+}
+
 // Screen shake on impact
 @keyframes screen-shake {
   0%, 100% { transform: translate(0, 0); }
-  20% { transform: translate(-4px, 2px); }
-  40% { transform: translate(4px, -2px); }
-  60% { transform: translate(-2px, 4px); }
-  80% { transform: translate(2px, -4px); }
+  20% { transform: translate(-5px, 2px); }
+  40% { transform: translate(5px, -3px); }
+  60% { transform: translate(-3px, 5px); }
+  80% { transform: translate(2px, -5px); }
 }
 
 // Flash white on hit
 @keyframes hit-flash {
-  0%, 100% { filter: brightness(1); }
-  50% { filter: brightness(2.5); }
+  0% { filter: brightness(1); }
+  30% { filter: brightness(2); }
+  60% { filter: brightness(1.3); }
+  100% { filter: brightness(1); }
 }
 
-// Animation classes
+// Damage effectiveness display
+@keyframes effectiveness-fade {
+  0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-30px); }
+}
+
+// Animation classes for js
 .sword-strike { animation: sword-strike 0.45s ease-out; }
-.bump-left { animation: bump-left 0.2s ease-out; }
+.enemy-strike { animation: enemy-strike 0.45s ease-out; }
+.player-recoil { animation: player-recoil 0.3s ease-out; }
 .hit-recoil { animation: hit-recoil 0.3s ease-out; }
 .screen-shake { animation: screen-shake 0.35s ease-out; }
 .hit-flash { animation: hit-flash 0.2s ease-out; }
+.enemy-death { animation: enemy-death 1s ease-in forwards; }
+.player-death { animation: player-death 0.8s ease-out forwards; }
