@@ -43,11 +43,30 @@ export default class extends Controller {
 
       // On impact:
       setTimeout(() => {
-        // Damage number
+        // Damage number with multiplier styling
         const damageEl = document.createElement("div");
         damageEl.classList.add("damage-number");
+        if (this.damageMultiplierValue === 2) {
+          damageEl.classList.add("critical");
+        } else if (this.damageMultiplierValue === 0.5) {
+          damageEl.classList.add("weak");
+        }
+        // if multiplier 1 no extra class, just normal red damage
         damageEl.textContent = `-${this.damageDealtValue}`;
         this.enemyTarget.appendChild(damageEl);
+
+        // Effectiveness text
+        if (this.damageMultiplierValue === 2) {
+          const effectivenessEl = document.createElement("div");
+          effectivenessEl.classList.add("effectiveness-text", "super-effective");
+          effectivenessEl.textContent = "SUPER EFFECTIVE！";
+          this.enemyTarget.appendChild(effectivenessEl);
+        } else if (this.damageMultiplierValue === 0.5) {
+          const effectivenessEl = document.createElement("div");
+          effectivenessEl.classList.add("effectiveness-text", "not-effective");
+          effectivenessEl.textContent = "NOT EFFECTIVE...";
+          this.enemyTarget.appendChild(effectivenessEl);
+}
 
         // Calculate HP, round to get exact number and max to make it not go below 0 for the bar and update width & text
         const newEnemyHp = this.enemyHpValue - this.damageDealtValue;
