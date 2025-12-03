@@ -67,13 +67,11 @@
                 <div class="answers-list">
                   <% question.answers.each_with_index do |answer, a_index| %>
                     <div class="answer-row
-                                <%= 'correct-answer' if a_index == question.correct_index %>
-                                <%= 'wrong-answer' if a_index == fq.selected_index && a_index != question.correct_index %>">
+                <%= 'correct-answer' if a_index == question.correct_index %>
+                <%= 'wrong-answer' if a_index == fq.selected_index && a_index != question.correct_index %>">
                       <span class="answer-text"><%= answer %></span>
-                      <% if a_index == question.correct_index %>
-                        <span class="answer-badge correct">正解</span>
-                      <% elsif a_index == fq.selected_index %>
-                        <span class="answer-badge selected">選択</span>
+                      <% if a_index == fq.selected_index %>
+                        <span class="answer-badge <%= a_index == question.correct_index ? 'correct' : 'selected' %>">選択</span>
                       <% end %>
                     </div>
                   <% end %>

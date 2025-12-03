@@ -1,15 +1,4 @@
 // ============================================
-// BATTLE JOURNAL
-// ============================================
-
-// Paper colors (local to this component)
-$paper-bg: #f4edd8;
-$paper-dark: #e0d4bc;
-$ink-dark: #3d2e1e;
-$ink-light: #6b5a4a;
-$ink-faded: #9a8b7a;
-
-// ============================================
 // MAIN CONTAINER
 // ============================================
 
@@ -18,7 +7,8 @@ $ink-faded: #9a8b7a;
   background: $gray-900;
   display: flex;
   flex-direction: column;
-  position: relative;
+  padding: 1rem;
+  padding-bottom: 0;
 }
 
 // ============================================
@@ -31,6 +21,7 @@ $ink-faded: #9a8b7a;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
+  gap: 1rem;
 
   // Hide scrollbar
   -ms-overflow-style: none;
@@ -41,23 +32,23 @@ $ink-faded: #9a8b7a;
 }
 
 // ============================================
-// SINGLE PAGE
+// SINGLE PAGE (now a card)
 // ============================================
 
 .journal-page {
   flex: 0 0 100%;
-  min-height: 100%;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
 
-  // Parchment background
-  background: linear-gradient(180deg, $paper-dark 0%, $paper-bg 3%, $paper-bg 97%, $paper-dark 100%);
+  // Card styling with subtle parchment tint
+  background: $gray-800;
+  border: 1px solid $gray-700;
+  border-radius: $border-radius;
 
-  // Subtle texture
-  background-image:
-    linear-gradient(180deg, $paper-dark 0%, $paper-bg 3%, $paper-bg 97%, $paper-dark 100%),
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  // Limit height so it doesn't touch edges
+  max-height: calc(100dvh - 160px);
+  margin-bottom: 1rem;
 }
 
 // ============================================
@@ -69,26 +60,27 @@ $ink-faded: #9a8b7a;
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid rgba($ink-faded, 0.3);
-  background: rgba($paper-dark, 0.5);
+  border-bottom: 1px solid $gray-700;
+  background: rgba($gray-900, 0.5);
+  border-radius: $border-radius $border-radius 0 0;
 }
 
 .page-number {
   font-size: 0.85rem;
-  color: $ink-faded;
+  color: $gray-400;
   font-weight: 500;
 }
 
 .page-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: $ink-dark;
+  color: $accent-gold;
   margin: 0;
 }
 
 .page-date {
   font-size: 0.85rem;
-  color: $ink-faded;
+  color: $gray-400;
 }
 
 // ============================================
@@ -99,7 +91,7 @@ $ink-faded: #9a8b7a;
   flex: 1;
   overflow-y: auto;
   padding: 1rem;
-  padding-bottom: 100px;
+  padding-bottom: 1.5rem;
 }
 
 // ============================================
@@ -108,30 +100,33 @@ $ink-faded: #9a8b7a;
 
 .page-banner {
   text-align: center;
-  padding: 0.5rem 1.5rem;
+  padding: 0.75rem 1.75rem;
   margin: 0 -1rem 1rem -1rem;
 
   span {
-    font-size: 1.75rem;
+    font-size: 2.5rem;
     font-weight: 900;
-    letter-spacing: 3px;
+    margin: 0;
+    white-space: nowrap;
   }
 
   &.victory {
-    background: linear-gradient(to right, transparent, rgba(34, 197, 94, 0.25), transparent);
-    border-top: 2px solid rgba(34, 197, 94, 0.5);
-    border-bottom: 2px solid rgba(34, 197, 94, 0.5);
+    background: linear-gradient(to right, transparent, rgba(34, 197, 94, 0.85), transparent);
+    border-top: 2px solid #4ade80;
+    border-bottom: 2px solid #4ade80;
     span {
-      color: #166534;
+      color: #fff;
+      text-shadow: 0 0 10px #22c55e;
     }
   }
 
   &.defeat {
-    background: linear-gradient(to right, transparent, rgba(220, 38, 38, 0.2), transparent);
-    border-top: 2px solid rgba(220, 38, 38, 0.4);
-    border-bottom: 2px solid rgba(220, 38, 38, 0.4);
+    background: linear-gradient(to right, transparent, rgba(220, 38, 38, 0.85), transparent);
+    border-top: 2px solid #f87171;
+    border-bottom: 2px solid #f87171;
     span {
-      color: #991b1b;
+      color: #fff;
+      text-shadow: 0 0 10px #dc2626;
     }
   }
 }
@@ -154,9 +149,9 @@ $ink-faded: #9a8b7a;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid rgba($ink-faded, 0.3);
-  border-radius: 8px;
-  background: rgba(white, 0.4);
+  border: 2px solid $gray-600;
+  border-radius: $border-radius;
+  background: rgba($gray-900, 0.5);
 
   &.vanquished .enemy-sprite {
     filter: grayscale(30%);
@@ -165,8 +160,8 @@ $ink-faded: #9a8b7a;
 }
 
 .enemy-sprite {
-  max-width: 90%;
-  max-height: 90%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   image-rendering: pixelated;
 }
@@ -178,10 +173,10 @@ $ink-faded: #9a8b7a;
   transform: translateX(-50%) rotate(-5deg);
   font-size: 0.7rem;
   font-weight: 700;
-  color: #991b1b;
-  background: $paper-bg;
+  color: #f87171;
+  background: $gray-800;
   padding: 0.2rem 0.6rem;
-  border: 2px solid #991b1b;
+  border: 2px solid #dc2626;
   border-radius: 3px;
   letter-spacing: 1px;
 }
@@ -190,7 +185,7 @@ $ink-faded: #9a8b7a;
   margin-top: 0.75rem;
   font-size: 1.3rem;
   font-weight: 700;
-  color: $ink-dark;
+  color: $gray-100;
 }
 
 // ============================================
@@ -203,9 +198,9 @@ $ink-faded: #9a8b7a;
   align-items: center;
   padding: 1rem;
   margin: 1rem 0;
-  background: rgba(white, 0.3);
+  background: rgba($gray-800, 0.85);
+  border: 1px solid rgba($gray-700, 0.5);
   border-radius: $border-radius;
-  border: 1px solid rgba($ink-faded, 0.2);
 }
 
 .stat-item {
@@ -217,7 +212,7 @@ $ink-faded: #9a8b7a;
 
 .stat-label {
   font-size: 0.7rem;
-  color: $ink-faded;
+  color: $gray-400;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -232,7 +227,7 @@ $ink-faded: #9a8b7a;
   justify-content: center;
   background: conic-gradient(
     #16a34a calc(var(--accuracy) * 1%),
-    #ddd calc(var(--accuracy) * 1%)
+    $gray-600 calc(var(--accuracy) * 1%)
   );
   position: relative;
 
@@ -241,7 +236,7 @@ $ink-faded: #9a8b7a;
     position: absolute;
     width: 43px;
     height: 43px;
-    background: $paper-bg;
+    background: $gray-800;
     border-radius: 50%;
   }
 
@@ -249,7 +244,7 @@ $ink-faded: #9a8b7a;
     position: relative;
     font-size: 0.9rem;
     font-weight: 700;
-    color: $ink-dark;
+    color: $gray-100;
   }
 }
 
@@ -260,18 +255,18 @@ $ink-faded: #9a8b7a;
   line-height: 1;
 
   &.rank-s { color: $accent-gold; text-shadow: 0 0 8px $accent-gold-glow; }
-  &.rank-a { color: #16a34a; }
-  &.rank-b { color: #2563eb; }
-  &.rank-c { color: #9333ea; }
-  &.rank-d { color: #ea580c; }
-  &.rank-f { color: #dc2626; }
+  &.rank-a { color: #4ade80; }
+  &.rank-b { color: #60a5fa; }
+  &.rank-c { color: #c084fc; }
+  &.rank-d { color: #fb923c; }
+  &.rank-f { color: #f87171; }
 }
 
 // Score
 .score-value {
   font-size: 1.5rem;
   font-weight: 700;
-  color: $ink-dark;
+  color: $gray-100;
 }
 
 // ============================================
@@ -285,10 +280,10 @@ $ink-faded: #9a8b7a;
 .section-title {
   font-size: 1.1rem;
   font-weight: 700;
-  color: $ink-dark;
+  color: $gray-100;
   margin: 0 0 0.75rem 0;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid rgba($ink-faded, 0.3);
+  border-bottom: 1px solid $gray-700;
 }
 
 // ============================================
@@ -296,8 +291,8 @@ $ink-faded: #9a8b7a;
 // ============================================
 
 .question-card {
-  background: rgba(white, 0.4);
-  border: 1px solid rgba($ink-faded, 0.2);
+  background: rgba($gray-900, 0.5);
+  border: 1px solid $gray-700;
   border-radius: $border-radius-sm;
   padding: 0.75rem;
   margin-bottom: 0.75rem;
@@ -313,29 +308,29 @@ $ink-faded: #9a8b7a;
 .q-number {
   font-size: 1rem;
   font-weight: 700;
-  color: $ink-dark;
+  color: $gray-100;
 }
 
 .q-result {
   font-size: 1.1rem;
   font-weight: 700;
 
-  &.correct { color: #16a34a; }
-  &.incorrect { color: #dc2626; }
+  &.correct { color: #4ade80; }
+  &.incorrect { color: #f87171; }
 }
 
 .q-type {
   margin-left: auto;
   font-size: 0.75rem;
-  color: $ink-faded;
-  background: rgba($ink-faded, 0.15);
+  color: $gray-400;
+  background: $gray-700;
   padding: 0.15rem 0.5rem;
   border-radius: $border-radius-sm;
 }
 
 .question-text {
   font-size: 1rem;
-  color: $ink-dark;
+  color: $gray-200;
   line-height: 1.5;
   margin-bottom: 0.75rem;
 }
@@ -356,18 +351,20 @@ $ink-faded: #9a8b7a;
   justify-content: space-between;
   padding: 0.5rem 0.75rem;
   border-radius: $border-radius-sm;
-  background: rgba($paper-dark, 0.5);
-  color: $ink-light;
+  background: $gray-700;
+  color: $gray-300;
   font-size: 0.95rem;
 
   &.correct-answer {
     background: rgba(34, 197, 94, 0.2);
-    color: #166534;
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    color: #86efac;
   }
 
   &.wrong-answer {
-    background: rgba(220, 38, 38, 0.15);
-    color: #991b1b;
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #fca5a5;
   }
 }
 
@@ -394,7 +391,7 @@ $ink-faded: #9a8b7a;
 
 .page-dots {
   position: fixed;
-  bottom: 75px;
+  bottom: 95px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -402,6 +399,7 @@ $ink-faded: #9a8b7a;
   padding: 0.5rem 1rem;
   background: rgba($gray-800, 0.95);
   border-radius: 20px;
+  border: 1px solid $gray-700;
   z-index: 20;
 
   .dot {
@@ -441,7 +439,7 @@ $ink-faded: #9a8b7a;
 
     p {
       font-size: 1.2rem;
-      color: $ink-faded;
+      color: $gray-400;
       margin: 0.5rem 0;
     }
   }
