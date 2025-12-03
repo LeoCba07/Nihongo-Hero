@@ -5,6 +5,13 @@ export default class extends Controller {
   static values = { percentage: Number, victory: Boolean }
 
   connect() {
+    if (this.victoryValue) {
+      this.audio = new Audio("/assets/results-victory.mp3");
+      this.audio.play();
+    } else {
+      this.audio = new Audio("/assets/results-death.mp3");
+      this.audio.play();
+    }
     setTimeout(() => this.animateCircle(), 300)
   }
 

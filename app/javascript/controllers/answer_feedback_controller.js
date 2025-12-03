@@ -82,8 +82,8 @@ export default class extends Controller {
         // Death animation if HP <= 0
         if (newEnemyHp <= 0) {
           setTimeout(() => {
-            this.audio = new Audio("/assets/results-victory.mp3");
-            this.audio.play();
+            // this.audio = new Audio("/assets/results-victory.mp3");
+            // this.audio.play();
             enemySprite.classList.add("enemy-death");
           }, 300);
         }
@@ -131,8 +131,8 @@ export default class extends Controller {
         // Death animation if HP <= 0
         if (newPlayerHp <= 0) {
           setTimeout(() => {
-            this.audio = new Audio("/assets/results-death.mp3");
-            this.audio.play();
+            // this.audio = new Audio("/assets/results-death.mp3");
+            // this.audio.play();
             playerSprite.classList.add("player-death");
           }, 300);
         }
@@ -147,7 +147,26 @@ export default class extends Controller {
     }
 
     // Set delay to be longer if answer was incorrect
-    const delay = isCorrect ? 3000 : 4000
+    // const delay = isCorrect ? 2000 : 2000
+
+    // // Wait and then submit the form reference
+    // setTimeout(() => {
+    //   form.submit();
+    // }, delay);
+    // Set delay to be longer if answer was incorrect OR if enemy was killed
+    let delay = 2000; // default delay
+
+    if (isCorrect) {
+      const newEnemyHp = this.enemyHpValue - this.damageDealtValue;
+      if (newEnemyHp <= 0) {
+        delay = 4000; // longer delay for victory
+      }
+    } else {
+      const newPlayerHp = this.playerHpValue - this.damageReceivedValue;
+      if (newPlayerHp <= 0) {
+        delay = 4000; // longer delay for defeat
+      }
+    }
 
     // Wait and then submit the form reference
     setTimeout(() => {
