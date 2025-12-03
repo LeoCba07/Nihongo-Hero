@@ -15,6 +15,13 @@ export default class extends Controller {
     setTimeout(() => this.animateCircle(), 300)
   }
 
+  disconnect() {
+    if (this.audio) {
+      this.audio.pause();
+      this.audio.currentTime = 0;
+    }
+  }
+
   getRankColor(percentage) {
     if (percentage === 100) return "#ffd700"  // S - gold
     if (percentage >= 80) return "#22c55e"    // A - green

@@ -145,32 +145,33 @@ export default class extends Controller {
         this.sceneTarget.classList.remove("screen-shake");
       }, 500);
     }
-
     // Set delay to be longer if answer was incorrect
-    // const delay = isCorrect ? 2000 : 2000
+    const delay = isCorrect ? 2000 : 2000
+
+    // // Wait and then submit the form reference
+    setTimeout(() => {
+      form.submit();
+    }, delay);
+    // Set delay to be longer if answer was incorrect OR if enemy was killed
+
+    // In case you want the delays to be different if player or enemy dies
+    // let delay = 2000; // default delay
+
+    // if (isCorrect) {
+    //   const newEnemyHp = this.enemyHpValue - this.damageDealtValue;
+    //   if (newEnemyHp <= 0) {
+    //     delay = 4000; // longer delay for victory
+    //   }
+    // } else {
+    //   const newPlayerHp = this.playerHpValue - this.damageReceivedValue;
+    //   if (newPlayerHp <= 0) {
+    //     delay = 4000; // longer delay for defeat
+    //   }
+    // }
 
     // // Wait and then submit the form reference
     // setTimeout(() => {
     //   form.submit();
     // }, delay);
-    // Set delay to be longer if answer was incorrect OR if enemy was killed
-    let delay = 2000; // default delay
-
-    if (isCorrect) {
-      const newEnemyHp = this.enemyHpValue - this.damageDealtValue;
-      if (newEnemyHp <= 0) {
-        delay = 4000; // longer delay for victory
-      }
-    } else {
-      const newPlayerHp = this.playerHpValue - this.damageReceivedValue;
-      if (newPlayerHp <= 0) {
-        delay = 4000; // longer delay for defeat
-      }
-    }
-
-    // Wait and then submit the form reference
-    setTimeout(() => {
-      form.submit();
-    }, delay);
   }
 }
