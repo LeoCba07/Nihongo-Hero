@@ -8,6 +8,15 @@ export default class extends Controller {
     setTimeout(() => this.animateCircle(), 300)
   }
 
+  getRankColor(percentage) {
+    if (percentage === 100) return "#f0c31e"  // S - gold
+    if (percentage >= 80) return "#4ade80"    // A - green
+    if (percentage >= 70) return "#60a5fa"    // B - blue
+    if (percentage >= 60) return "#facc15"    // C - yellow
+    if (percentage >= 40) return "#fb923c"    // D - orange
+    return "#f87171"                          // F - red
+  }
+
   animateCircle() {
     const circumference = 2 * Math.PI * 54
     const targetPercentage = this.percentageValue
@@ -18,6 +27,9 @@ export default class extends Controller {
     this.circleTarget.style.strokeDashoffset = circumference
     this.percentageTarget.textContent = "0%"
 
+    // Start with F color
+    this.circleTarget.style.stroke = this.getRankColor(0)
+
     const animate = (currentTime) => {
       const elapsed = currentTime - startTime
       const progress = Math.min(elapsed / duration, 1)
@@ -25,6 +37,9 @@ export default class extends Controller {
 
       const currentPercentage = Math.round(easeOut * targetPercentage)
       const offset = circumference * (1 - (easeOut * targetPercentage / 100))
+
+      // Update color based on current percentage
+      this.circleTarget.style.stroke = this.getRankColor(currentPercentage)
 
       this.circleTarget.style.strokeDashoffset = offset
       this.percentageTarget.textContent = `${currentPercentage}%`
@@ -39,8 +54,8 @@ export default class extends Controller {
     requestAnimationFrame(animate)
   }
 
-    revealRank() {
-    this.percentageTarget.style.transition = "opacity 0.1s"
+  revealRank() {
+    this.percentageTarget.style.transition = "opacity 0.2s"
 
     this.rankTarget.classList.add("rank-visible")
 
@@ -49,7 +64,7 @@ export default class extends Controller {
     }
 
     setTimeout(() => {
-    window.dispatchEvent(new CustomEvent("results:complete"))
+      window.dispatchEvent(new CustomEvent("results:complete"))
     }, 500)
   }
 }

@@ -20,30 +20,24 @@
         stroke-linecap="round" transform="rotate(-90 60 60)"
         data-results-target="circle"
         style="stroke-dasharray: 339.292;"/>
-          <defs>
-            <linearGradient id="accuracyGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#4ade80"/>
-              <stop offset="100%" stop-color="#22c55e"/>
-            </linearGradient>
-          </defs>
         </svg>
         <div class="accuracy-text">
           <span class="accuracy-percentage" data-results-target="percentage"><%= @percentage_correct.to_i %>%</span>
         </div>
         <div class="rank-display" data-results-target="rank" data-rank="<%= case @percentage_correct.to_i
                                                 when 100 then 'S'
-                                                when 90..99 then 'A'
-                                                when 80..89 then 'B'
-                                                when 70..79 then 'C'
-                                                when 55..69 then 'D'
+                                                when 80..99 then 'A'
+                                                when 70..89 then 'B'
+                                                when 60..79 then 'C'
+                                                when 40..69 then 'D'
                                                 else 'F'
                                                 end %>">
           <span class="rank-letter"><%= case @percentage_correct.to_i
                                         when 100 then 'S'
-                                        when 90..99 then 'A'
-                                        when 80..89 then 'B'
-                                        when 70..79 then 'C'
-                                        when 55..69 then 'D'
+                                        when 80..99 then 'A'
+                                        when 70..89 then 'B'
+                                        when 60..79 then 'C'
+                                        when 40..69 then 'D'
                                         else 'F'
                                         end %></span>
         </div>
