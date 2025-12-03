@@ -493,7 +493,7 @@
   border: 1px solid $gray-700;
   z-index: 20;
 
-  .dot {
+    .dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
@@ -501,8 +501,10 @@
     cursor: pointer;
     transition: all 0.2s ease;
 
-    &:hover {
-      background: $gray-400;
+    @media (hover: hover) {
+      &:hover {
+        background: $gray-400;
+      }
     }
 
     &.active {
