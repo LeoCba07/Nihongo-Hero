@@ -170,14 +170,22 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background-color 0.15s ease;
+  transition: background-color 0.15s ease, transform 0.1s ease, box-shadow 0.1s ease;
 
-  // Only hover on desktop
   @media (hover: hover) {
     &:hover {
       background-color: $gray-600;
       border-color: $gray-500;
     }
+  }
+
+  &:active {
+    background-color: $gray-600;
+    transform: scale(0.98);
+  }
+
+  &:focus {
+    outline: none;
   }
 
   &:disabled {
@@ -235,15 +243,26 @@
   position: relative;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
   cursor: pointer;
-  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.1s ease, box-shadow 0.1s ease;
 
-  // Only hover on desktop
   @media (hover: hover) {
     &:hover {
       background-color: $accent-gold-dark;
       border-color: $accent-gold;
       color: black;
     }
+  }
+
+  &:active {
+    background-color: $accent-gold-dark;
+    border-color: $accent-gold;
+    color: black;
+    transform: translateY(2px);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  &:focus {
+    outline: none;
   }
 
   .btn-icon {
