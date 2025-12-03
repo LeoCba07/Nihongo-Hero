@@ -18,17 +18,25 @@ class UsersController < ApplicationController
       
     last_question_date = unique_creation_dates.last
       #If our last correct question was today or yesterday, we start the streak at 1
-    current_streak = (last_question_date == Date.today || last_question_date == Date.yesterday) ? 1 : 0
+    
+    # If last question is before yesterday, there is no streak
+    if last_question_date < Date.yesterday
+      return 0 
+    end
 
+    # Otherwise, we initialize our streak at 1 day
+    current_streak = 1
+
+    #Starting from the day before the last day of activity (-2, since arrays start at 0), we check if current day is exactly one day before the previous day
     (unique_creation_dates.length - 2).downto(0) do |i|
-      current_date = unique_creation_dates[i]
-      previous_date = unique_creation_dates[i+1]
-      
-      # Check if the current date is exactly one day before the next date in the array
+    current_date = unique_creation_dates[i]
+    previous_date = unique_creation_dates[i+1]
+    
+    # Check if the current date is exactly one day before the next date (consecutive)
       if current_date == previous_date - 1.day
         current_streak += 1
       else
-        # The sequence is broken, so the streak calculation is complete
+        # Sequence is broken. Stop and return the count.
         break
       end
     end
