@@ -56,7 +56,7 @@
   align-items: center;
   position: relative;
   padding: 20px 0 40px;
-  gap: 20px;
+  gap: 50px;
 }
 
 // The connecting trail line (gray - locked portion)
@@ -86,8 +86,8 @@
 // ===== LEVEL NODES =====
 
 .level-node {
-  width: 90px;
-  height: 90px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   display: flex;
   flex-direction: column;
@@ -99,12 +99,12 @@
 }
 
 .node-icon {
-  font-size: 1.5rem;
+  font-size: 2.2rem;
   line-height: 1;
 }
 
 .node-label {
-  font-size: 1rem;
+  font-size: 1.4rem;
   font-weight: 700;
   margin-top: 4px;
 }
@@ -127,7 +127,7 @@
     left: 50%;
     transform: translateX(-50%);
     width: 12px;
-    height: 28px;
+    height: 56px;
     background: $accent-gold;
     border-radius: 6px;
     z-index: -1;
@@ -142,15 +142,15 @@
 
 // Completed final level
 .node-completed.node-final {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
 
   .node-icon {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   .node-label {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
@@ -159,41 +159,109 @@
 // ===== LOCKED NODE =====
 
 .node-locked {
-  width: 80px;
-  height: 80px;
+  position: relative;
+  width: 120px;
+  height: 120px;
   background: rgba($gray-700, 0.6);
   box-shadow:
     0 4px 0 $gray-800,
     0 6px 12px rgba(0, 0, 0, 0.4);
   color: $gray-500;
   backdrop-filter: blur(4px);
+  cursor: pointer;
 
   .node-icon {
-    font-size: 1.3rem;
+    font-size: 1.8rem;
     opacity: 0.5;
   }
 
   .node-label {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     opacity: 0.5;
   }
+
+  &:active {
+    transform: translateY(3px);
+    box-shadow:
+      0 1px 0 $gray-800,
+      0 3px 8px rgba(0, 0, 0, 0.4);
+  }
+}
+
+// ===== MYSTERY BUBBLE =====
+
+.mystery-bubble {
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 16px);
+  transform: translateY(-50%) scale(0);
+  transform-origin: right center;
+  background: rgba($gray-900, 0.95);
+  border: 2px solid $gray-500;
+  border-radius: $border-radius;
+  padding: 10px 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+  z-index: 10;
+  opacity: 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  pointer-events: none;
+
+  // Triangle pointer
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    border: 8px solid transparent;
+    border-left-color: $gray-500;
+  }
+
+  // Inner triangle (to match background)
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-left-color: rgba($gray-900, 0.95);
+    z-index: 1;
+  }
+}
+
+.mystery-bubble--visible {
+  transform: translateY(-50%) scale(1);
+  opacity: 1;
+}
+
+.mystery-bubble-content {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: $gray-400;
+  font-size: 1.1rem;
+  font-weight: 700;
+  white-space: nowrap;
+  letter-spacing: 2px;
 }
 
 // ===== FINAL LEVEL (Level 10) =====
 
 .node-final {
-  width: 100px;
-  height: 100px;
+  width: 130px;
+  height: 130px;
   justify-content: center;
   gap: 4px;
 }
 
 .node-final .node-icon {
-  font-size: 2rem;
+  font-size: 2.2rem;
 }
 
 .node-final .node-label {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -252,8 +320,8 @@
   &::after {
     content: '';
     position: absolute;
-    top: 40px;
-    bottom: -28px;
+    top: 50px;
+    bottom: -56px;
     left: 50%;
     transform: translateX(-50%);
     width: 12px;
@@ -267,8 +335,8 @@
 // ===== CURRENT NODE =====
 
 .node-current {
-  width: 105px;
-  height: 105px;
+  width: 160px;
+  height: 160px;
   background: linear-gradient(145deg, lighten($accent-gold, 8%), $accent-gold);
   box-shadow:
     0 8px 0 $accent-gold-dark,
@@ -282,11 +350,11 @@
   z-index: 3;
 
   .node-icon {
-    font-size: 1.8rem;
+    font-size: 2.8rem;
   }
 
   .node-label {
-    font-size: 1.1rem;
+    font-size: 1.6rem;
   }
 
   &:active {
@@ -310,11 +378,11 @@
 
 // Current final level
 .node-current.node-current-final {
-  width: 120px;
-  height: 120px;
+  width: 180px;
+  height: 180px;
 
   .node-icon {
-    font-size: 2.5rem;
+    font-size: 3.2rem;
   }
 
   .node-label {
