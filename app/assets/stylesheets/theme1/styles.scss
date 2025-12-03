@@ -344,13 +344,14 @@
   bottom: 0.5rem;
   left: 0.5rem;
   right: 0.5rem;
-  min-height: 20%;
-  max-height: 40%;
-  font-size: clamp(1.5rem, 8vw, 3rem);
-  background-color: rgba($gray-900, 0.4);
-  padding: 1rem;
+  min-height: 15%;
+  max-height: 30%;
+  font-size: clamp(1.4rem, 4.5vw, 1.7rem);
+  background-color: rgba($gray-900, 0.5);
+  padding: 0.6rem 0.6rem;
   border-radius: 0.5rem;
   color: $gray-100;
+  overflow-y: auto;
 
   // text alignment settings
   display: flex;
