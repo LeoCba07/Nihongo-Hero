@@ -26,3 +26,35 @@
 
   <%= render "devise/shared/links" %>
 </div>
+<% content_for :hide_navbar, true %>
+
+<div class="login-page">
+  <div class="login-header mt-5">
+    <h2 class="text-dark shadow-dark"><strong>Nihongo Hero</strong></h2>
+    <p class="text-dark text-center">Level up your Japanese</p>
+  </div>
+
+    <div class="login-modal">
+      <h2 class="login-title text-center text-dark pt-3"><strong>Sign up</strong></h2>
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-inputs px-5">
+         <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" }%>
+        <%= f.input :password,
+                    required: true,
+                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password_confirmation,
+                    required: true,
+                    input_html: { autocomplete: "new-password" } %>
+        </div>
+
+        <div class="form-actions text-center">
+          <%= f.button :submit, "Resume Story! ▷", class: "btn-resume" %>
+        </div>
+      <%= render "devise/shared/links" %>
+    </div>
+      <% end %>
+</div>
