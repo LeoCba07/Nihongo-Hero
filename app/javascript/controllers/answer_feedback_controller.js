@@ -40,6 +40,8 @@ export default class extends Controller {
 
       // 1- Player bumps forward
       playerSprite.classList.add("sword-strike");
+      this.audio = new Audio("/assets/slash.mp3");
+      this.audio.play();
 
       // On impact:
       setTimeout(() => {
