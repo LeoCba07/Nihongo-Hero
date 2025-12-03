@@ -9,11 +9,11 @@ export default class extends Controller {
   }
 
   getRankColor(percentage) {
-    if (percentage === 100) return "#f0c31e"  // S - gold
-    if (percentage >= 80) return "#4ade80"    // A - green
-    if (percentage >= 60) return "#60a5fa"    // B - blue
-    if (percentage >= 40) return "#facc15"    // C - yellow
-    if (percentage >= 20) return "#fb923c"    // D - orange
+    if (percentage === 100) return "#ffd700"  // S - gold
+    if (percentage >= 80) return "#22c55e"    // A - green
+    if (percentage >= 60) return "#3b82f6"    // B - blue
+    if (percentage >= 40) return "#eab308"    // C - amber
+    if (percentage >= 20) return "#f97316"    // D - orange
     return "#f87171"                          // F - red
   }
 
