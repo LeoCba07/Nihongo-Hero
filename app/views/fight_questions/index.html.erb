@@ -61,7 +61,7 @@
         </div>
         <div class="exp-info">
           <div class="exp-bar-container">
-            <div class="exp-bar-fill" data-exp-bar-target="progressBar" style="width: <%= @old_exp_percent %>%;"></div>
+            <div class="exp-bar-fill progress-bar" data-exp-bar-target="progressBar" style="width: <%= @old_exp_percent %>%;"></div>
             <span class="exp-text"><%= @user.experience_points %> / <%= (@user.level + 1) * 100 %></span>
           </div>
           <div class="exp-gained">+<%= @exp_gained %> EXP</div>
@@ -97,14 +97,10 @@
                 <div class="question-details">
                   <% question.answers.each_with_index do |answer, answer_index| %>
                     <div class="answer-item <%= 'correct-answer' if answer_index == question.correct_index %> <%= 'wrong-answer' if answer_index == fq.selected_index && answer_index != question.correct_index %>">
-                      <span class="answer-number"><%= answer_index + 1 %>.</span>
                       <span class="answer-text"><%= answer %></span>
                       <span class="answer-badges">
                         <% if answer_index == fq.selected_index %>
                           <span class="answer-badge your-answer">YOU</span>
-                        <% end %>
-                        <% if answer_index == question.correct_index %>
-                          <span class="answer-badge correct">正解</span>
                         <% end %>
                       </span>
                     </div>

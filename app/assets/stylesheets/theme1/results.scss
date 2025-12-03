@@ -3,9 +3,10 @@
 // Page wrapper
 .results-page {
   min-height: 100dvh;
-  padding: 1rem;
+  padding: 1rem 0;
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
   background-repeat: no-repeat;
   position: relative;
 
@@ -26,20 +27,20 @@
   margin: 0 auto;
   position: relative;
   z-index: 1;
-  padding: 0 0.5rem;
   width: 100%;
+  padding: 0 1rem;
   box-sizing: border-box;
 }
 
 // Victory/Defeat Banner
 .results-banner {
   text-align: center;
-  padding: 1rem 2rem;
-  margin-bottom: 1rem;
+  padding: 0.75rem 1.75rem;
+  margin: 0 -1rem 0.75rem -1rem;
 
   h1 {
-    font-size: 2.5rem;
-    font-weight: 800;
+    font-size: 3.75rem;
+    font-weight: 900;
     margin: 0;
     white-space: nowrap;
   }
@@ -86,8 +87,8 @@
 }
 
 .result-sprite {
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
   image-rendering: pixelated;
 }
@@ -117,8 +118,8 @@
 // Accuracy Circle
 .accuracy-container {
   position: relative;
-  width: 90px;
-  height: 90px;
+  width: 110px;
+  height: 110px;
   flex-shrink: 0;
 }
 
@@ -136,7 +137,7 @@
 }
 
 .accuracy-percentage {
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: $accent-gold;
 }
@@ -151,7 +152,7 @@
 }
 
 .rank-letter {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 900;
 }
 
@@ -175,10 +176,10 @@
 }
 
 .level-badge {
-  width: 40px;
-  height: 40px;
-  min-width: 40px;
-  font-size: 1.25rem;
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  font-size: 1.5rem;
   border-radius: 50%;
   background: linear-gradient(135deg, #1a3a2e, #0d2620);
   border: 2px solid #22c55e;
@@ -197,9 +198,9 @@
 
 .exp-bar-container {
   position: relative;
-  height: 14px;
+  height: 20px;
   background: $gray-700;
-  border-radius: 7px;
+  border-radius: 10px;
   overflow: hidden;
 }
 
@@ -210,7 +211,6 @@
   height: 100%;
   border-radius: 7px;
   background: linear-gradient(to right, #22c55e, #4ade80);
-  transition: width 1s ease-out;
 }
 
 .exp-text {
@@ -220,13 +220,14 @@
   transform: translateY(-50%);
   font-size: 0.5rem;
   font-weight: bold;
+  font-size: 0.65rem;
   color: $gray-100;
 }
 
 .exp-gained {
   text-align: right;
-  font-size: 0.6rem;
-  color: #4ade80;
+  font-size: 0.75rem;
+  color: $accent-gold;
   margin-top: 0.125rem;
 }
 
@@ -247,7 +248,7 @@
 }
 
 .history-header {
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: $gray-100;
   margin-bottom: 0.75rem;
@@ -277,7 +278,7 @@
 }
 
 .result-icon {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: bold;
   margin-right: 0.75rem;
 
@@ -298,11 +299,11 @@
 .question-text {
   color: $gray-100;
   margin-bottom: 0.25rem;
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 
 .question-meta {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   color: $gray-400;
 }
 
@@ -325,15 +326,17 @@
 }
 
 .answer-item {
-  padding: 0.5rem;
+  padding: 0.75rem;
+  font-size: 0.9rem;
   margin-bottom: 0.25rem;
   border-radius: 6px;
   background: $gray-800;
   color: $gray-200;
-  font-size: 0.8rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  position: relative;
+  justify-content: center;
 
   &:last-child {
     margin-bottom: 0;
@@ -341,34 +344,30 @@
 
   &.correct-answer {
     background: #065f46;
-    color: #a7f3d0;
+    color: #ffffff;
   }
 
   &.wrong-answer {
     background: #3a2a2a;
-    color: #fca5a5;
+    color: #ffffff;
   }
 }
 
-.answer-number {
-  font-weight: bold;
-  min-width: 1.25rem;
-}
-
 .answer-text {
-  flex-grow: 1;
+  text-align: 1;
 }
 
 .answer-badges {
   display: flex;
+  position: absolute;
   gap: 0.25rem;
-  flex-shrink: 0;
+  right: 0.75rem;
 }
 
 .answer-badge {
-  padding: 0.125rem 0.4rem;
+  font-size: 0.65rem;
+  padding: 0.2rem 0.5rem;
   border-radius: 4px;
-  font-size: 0.55rem;
   font-weight: bold;
 
   &.correct {
@@ -386,15 +385,27 @@
 .continue-btn {
   display: block;
   width: 100%;
-  padding: 1rem;
-  background: linear-gradient(135deg, #4ade80, #22c55e);
-  border: none;
+  padding: 1.25rem;
+  font-size: 1.25rem;
+  background: linear-gradient(135deg, #f0c31e, #d4a817);
+  border: 2px solid $accent-gold-glow;
   border-radius: 12px;
-  color: #052e16;
-  font-size: 1rem;
+  color: $gray-900;
   font-weight: bold;
   text-align: center;
   text-decoration: none;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
+}
+
+// Animations
+@keyframes celebrate {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+// Animation class for JS
+.result-sprite.celebrating {
+  animation: celebrate 0.6s ease-in-out infinite;
 }
 
 // Mobile adjustments
