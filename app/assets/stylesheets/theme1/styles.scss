@@ -97,7 +97,7 @@
 
 .btn-primary {
   background-color: $gray-700;
-  border-width: 4px;
+  border-width: 4px !important;
   border-style: solid;
   border-color: $gray-500;
   color: $gray-100;
