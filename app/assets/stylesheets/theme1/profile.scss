@@ -1,0 +1,62 @@
+// DEBUG - Remove when done
+// * {
+// border: 1px solid red !important;
+// }
+
+.profile-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-sprite-outer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.profile-sprite-holder {
+  display: flex;
+}
+
+.profile-sprite {
+  height: 25vh;
+  width: auto;
+  image-rendering: pixelated;
+}
+
+.profile-stats {
+  display: flex;
+  justify-content: space-around;
+  gap: 0.5rem;
+}
+
+.stat-box {
+  flex: 1;  // Share space equally
+  max-width: 30%;  // Prevent getting too big
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $gray-700;
+  border: 2px solid $accent-gold-glow;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  aspect-ratio: 1;
+  position: relative;
+}
+
+.stat-value {
+  font-size: clamp(1.7rem, 4vw, 1.5rem);  // Scales with viewport
+  font-weight: bold;
+  color: $accent-gold;
+}
+
+.stat-label {
+  font-size: clamp(1rem, 2vw, 0.75rem);  // Scales with viewport
+  color: $gray-300;
+  text-align: center;
+  font-weight: bold;
+}

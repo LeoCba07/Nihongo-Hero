@@ -2,15 +2,16 @@
 @import "config/fonts";
 @import "config/colors";
 @import "config/bootstrap_variables";
+@import "theme1/variables"; // variables come before bootstrap
 
 // External libraries
-@import "theme1/variables"; // variables come before bootstrap
 @import "bootstrap";
-@import "theme1/styles"; // styles come after bootstrap
-@import "theme1/map"; // map styles
 @import "font-awesome";
 
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
 @import "theme1/login";
+@import "theme1/styles"; // styles come after bootstrap
+@import "theme1/map"; // map styles
+@import "theme1/profile"; // map styles
