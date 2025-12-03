@@ -11,9 +11,9 @@ export default class extends Controller {
   getRankColor(percentage) {
     if (percentage === 100) return "#f0c31e"  // S - gold
     if (percentage >= 80) return "#4ade80"    // A - green
-    if (percentage >= 70) return "#60a5fa"    // B - blue
-    if (percentage >= 60) return "#facc15"    // C - yellow
-    if (percentage >= 40) return "#fb923c"    // D - orange
+    if (percentage >= 60) return "#60a5fa"    // B - blue
+    if (percentage >= 40) return "#facc15"    // C - yellow
+    if (percentage >= 20) return "#fb923c"    // D - orange
     return "#f87171"                          // F - red
   }
 
@@ -60,7 +60,7 @@ export default class extends Controller {
     this.rankTarget.classList.add("rank-visible")
 
     if (this.victoryValue && this.hasPlayerSpriteTarget) {
-      this.playerSpriteTarget.classList.add("celebrating")
+      this.playerSpriteTarget.classList.add("celebrate")
     }
 
     setTimeout(() => {

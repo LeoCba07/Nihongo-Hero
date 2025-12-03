@@ -25,21 +25,21 @@
           <span class="accuracy-percentage" data-results-target="percentage"><%= @percentage_correct.to_i %>%</span>
         </div>
         <div class="rank-display" data-results-target="rank" data-rank="<%= case @percentage_correct.to_i
-                                                when 100 then 'S'
-                                                when 80..99 then 'A'
-                                                when 70..89 then 'B'
-                                                when 60..79 then 'C'
-                                                when 40..69 then 'D'
-                                                else 'F'
-                                                end %>">
+                                            when 100 then 'S'
+                                            when 80..99 then 'A'
+                                            when 60..79 then 'B'
+                                            when 40..59 then 'C'
+                                            when 20..39 then 'D'
+                                            else 'F'
+                                            end %>">
           <span class="rank-letter"><%= case @percentage_correct.to_i
-                                        when 100 then 'S'
-                                        when 80..99 then 'A'
-                                        when 70..89 then 'B'
-                                        when 60..79 then 'C'
-                                        when 40..69 then 'D'
-                                        else 'F'
-                                        end %></span>
+                                when 100 then 'S'
+                                when 80..99 then 'A'
+                                when 60..79 then 'B'
+                                when 40..59 then 'C'
+                                when 20..39 then 'D'
+                                else 'F'
+                                end %></span>
         </div>
       </div>
       <div class="character-display">

@@ -10,7 +10,6 @@ export default class extends Controller {
   }
 
   start() {
-  console.log("EXP bar start() called");
   if (this.levelUpValue) {
     // --- First fill up to 100% to show level up ---
     const newLevel = parseInt(this.levelTarget.innerText)
