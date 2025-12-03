@@ -1,51 +1,51 @@
 [
   {
-    "story_content": "小さな村 — 山から怪しい影が来る...",
+    "story_content": "小さな村に到着。村人が怯えている。「山から怪しい影が来るんです...助けてください」",
     "map_image": "tree.png",
     "map_node": 1
   },
   {
-    "story_content": "森の崖 — 山への道を探す",
+    "story_content": "森の崖に着いた。村人の話では、山への道はこの先にあるらしい。進むしかない。",
     "map_image": "forest_cliff.png",
     "map_node": 2
   },
   {
-    "story_content": "森の湖畔 — 古い橋を渡る",
+    "story_content": "湖畔で古い橋を見つけた。壊れかけているが、渡るしかない。向こう岸に何かが見える...",
     "map_image": "forest_shore.png",
     "map_node": 3
   },
   {
-    "story_content": "暗い森 — 影が近づいてくる...",
+    "story_content": "森が急に暗くなった。木々の間から影が近づいてくる。「誰だ！」",
     "map_image": "dark_forest.png",
     "map_node": 4
   },
   {
-    "story_content": "丘の上 — ついに山が見えた",
+    "story_content": "丘の上に出た。ついに山が見えた！でも、まだ遠い。日が暮れる前に進まないと。",
     "map_image": "hilltop_tree.png",
     "map_node": 5
   },
   {
-    "story_content": "夕暮れの平原 — 山へ向かって走る",
+    "story_content": "夕暮れの平原を走る。山が近づいてきた。村人たちの顔が頭に浮かぶ。必ず守る。",
     "map_image": "sunset_plains.png",
     "map_node": 6
   },
   {
-    "story_content": "山道 — 登り始める",
+    "story_content": "山道を登り始めた。空気が冷たい。上から不気味な気配を感じる...",
     "map_image": "mountains.png",
     "map_node": 7
   },
   {
-    "story_content": "高原 — 頂上まであと少し...",
+    "story_content": "高原に出た。頂上まであと少し。ここまで来たら、もう戻れない。",
     "map_image": "plains_2.png",
     "map_node": 8
   },
   {
-    "story_content": "険しい崖 — 最後の登り",
+    "story_content": "最後の崖。険しいが、頂上が見える。影の正体がそこにいる。覚悟を決めろ。",
     "map_image": "cliff_with_rocks.png",
     "map_node": 9
   },
   {
-    "story_content": "オーロラの頂上 — 最後の戦い！",
+    "story_content": "オーロラが輝く頂上。影の主が待っていた。「村を脅かすのはお前か！」最後の戦いだ！",
     "map_image": "aurora_mountains.png",
     "map_node": 10
   }
