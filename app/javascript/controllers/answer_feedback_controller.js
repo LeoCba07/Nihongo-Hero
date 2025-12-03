@@ -80,6 +80,8 @@ export default class extends Controller {
         // Death animation if HP <= 0
         if (newEnemyHp <= 0) {
           setTimeout(() => {
+            this.audio = new Audio("/assets/results-victory.mp3");
+            this.audio.play();
             enemySprite.classList.add("enemy-death");
           }, 300);
         }
