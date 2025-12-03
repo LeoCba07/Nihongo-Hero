@@ -2,7 +2,10 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content victory-modal">
       <div class="modal-body text-center p-5">
-        <h1 class="victory-title mb-4">🎉 Map Completed!</h1>
+        <h1 class="victory-title mb-4">
+          <%= image_tag "character-sprites/Samurai/player_character.png", alt: "Player Character", class: "player-sprite" %>
+          <%= image_tag "enemy-images/dead_shroom.png", alt: "dead-shroom", class: "player-sprite dead-shroom" %>
+        </h1>
 
         <div class="victory-stats mb-4">
           <h3>Congratulations!</h3>
@@ -31,7 +34,7 @@
           </div>
         </div>
 
-        <%= link_to "Start Next Map →", map_path, class: "btn btn-warning btn-lg px-5 py-3 fw-bold" %>
+        <%= link_to "Start Next Map →", map_path, class: "btn btn-victory btn-lg px-5 py-3 fw-bold" %>
       </div>
     </div>
   </div>
