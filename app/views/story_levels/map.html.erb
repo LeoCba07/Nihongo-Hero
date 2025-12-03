@@ -11,7 +11,9 @@
 <% if @show_victory_modal %>
   <%= render 'victory_modal' %>
 <% end %>
-<div class="map-container" style="background-image: url('<%= asset_path(@current_level ? "backgrounds/#{@current_level&.map_image}" : 'default.jpg') %>');">
+<div class="map-container"
+     id="map-container"
+     style="background-image: url('<%= asset_path(@current_level ? "backgrounds/#{@current_level&.map_image}" : 'default.jpg') %>');">
   <div class="map-overlay" id="map-scroll" data-controller="scroll-to-current-level">
     <div class="map-header">
       <h1 class="map-title">Your Journey</h1>
@@ -33,7 +35,10 @@
         %>
         <div class="level-row">
           <% if is_completed %>
-            <div class="level-node node-completed <%= 'node-final' if is_final %>">
+            <div class="level-node node-completed <%= 'node-final' if is_final %>"
+                 data-controller="completed-level"
+                 data-action="click->completed-level#focus"
+              data-completed-level-background-value="<%= asset_path("backgrounds/#{level.map_image}") %>">
               <span class="node-icon">
                 <% if is_final %>
                   <i class="fa-solid fa-torii-gate"></i>
@@ -45,6 +50,7 @@
             </div>
           <% elsif is_current %>
             <div class="current-level-wrapper" data-scroll-to-current-level-target="current">
+              <%= image_tag "character-sprites/Samurai/player_character.png", alt: "Your character", class: "map-player-sprite" %>
               <%= button_to fights_path, method: :post, class: "level-node node-current #{'node-current-final' if is_final}" do %>
                 <span class="node-icon">
                   <% if is_final %>
@@ -63,8 +69,8 @@
             </div>
           <% else %>
             <div class="level-node node-locked <%= 'node-final' if is_final %> <%= 'node-final-close' if is_final && @accessible_level_id >= 7 %>"
-              data-controller="mystery-bubble"
-              data-action="click->mystery-bubble#show">
+                 data-controller="mystery-bubble"
+                 data-action="click->mystery-bubble#show">
               <span class="node-icon">
                 <% if is_final %>
                   <i class="fa-solid fa-torii-gate"></i>
