@@ -1,0 +1,47 @@
+<% content_for :hide_navbar, true %>
+
+<div class="profile-page">
+
+  <div class="profile-sprite-outer">
+    <div class="profile-sprite-holder">
+      <%= image_tag "character-sprites/Samurai/player_character.png", class: "profile-sprite" %>
+    </div>
+  </div>
+
+  <div class="card profile-card">
+    <div class="profile-stats">
+      <div class="stat-box">
+        <span class="stat-value"><%= @levels_cleared %></span>
+        <span class="stat-label">Levels Cleared</span>
+      </div>
+
+      <div class="stat-box">
+        <span class="stat-value"><%= @avg_perc_correct %></span>
+        <span class="stat-label">Accuracy</span>
+      </div>
+
+      <div class="stat-box">
+        <span class="stat-value"><%= @days_streak %></span>
+        <span class="stat-label">Day Streak</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card profile-card">
+    <div class="difficulty">
+      <label for="jlpt-level">Difficulty</label>
+      <%= select_tag :difficulty,
+        options_for_select([["N1", "N1"], ["N2", "N2"], ["N3", "N3"]], @user.japanese_difficulty),
+        class: "form-select" %>
+    </div>
+  </div>
+
+  <div id="leaderboard" class="card">
+
+  </div>
+
+</div>
+
+<div class="bottom-navbar" style="height: 80px;" aria-hidden="true">
+  <%= render 'shared/bottom_navbar' %>
+</div>
