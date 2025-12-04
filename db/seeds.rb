@@ -75,12 +75,108 @@ User.where(hitpoints: nil).update_all(hitpoints: 60)
 
 # User for Pitch. Delete after pitch
 user = User.create(
-    email: "user@test",
+    email: "bob@user",
     password: "123456",
     password_confirmation: "123456",
     level: 5,
     experience_points: 580,
     character_name: "Bob",
+  )
+
+story_levels_array = StoryLevel.all  
+for index in (1..8) do
+  fight = Fight.create(
+    user: user,
+    story_level: story_levels_array.find{|story_level| story_level.map_node == index},
+    status: "completed",
+    enemy: Enemy.all.sample
+  )
+  FightQuestion.create(
+    fight: fight,
+    question: Question.all.sample,
+    selected_index: rand(0..3)
+  )
+end
+  #Bob2
+  user = User.create(
+    email: "bob@user2",
+    password: "123456",
+    password_confirmation: "123456",
+    level: 5,
+    experience_points: 580,
+    character_name: "Bobby",
+  )
+
+story_levels_array = StoryLevel.all  
+for index in (1..8) do
+  fight = Fight.create(
+    user: user,
+    story_level: story_levels_array.find{|story_level| story_level.map_node == index},
+    status: "completed",
+    enemy: Enemy.all.sample
+  )
+  FightQuestion.create(
+    fight: fight,
+    question: Question.all.sample,
+    selected_index: rand(0..3)
+  )
+end
+  #Bob3
+  user = User.create(
+    email: "bob@user3",
+    password: "123456",
+    password_confirmation: "123456",
+    level: 5,
+    experience_points: 580,
+    character_name: "Alice",
+  )
+
+story_levels_array = StoryLevel.all  
+for index in (1..8) do
+  fight = Fight.create(
+    user: user,
+    story_level: story_levels_array.find{|story_level| story_level.map_node == index},
+    status: "completed",
+    enemy: Enemy.all.sample
+  )
+  FightQuestion.create(
+    fight: fight,
+    question: Question.all.sample,
+    selected_index: rand(0..3)
+  )
+end
+  #Bob4
+  user = User.create(
+    email: "bob@user4",
+    password: "123456",
+    password_confirmation: "123456",
+    level: 5,
+    experience_points: 580,
+    character_name: "Peter",
+  )
+
+story_levels_array = StoryLevel.all  
+for index in (1..8) do
+  fight = Fight.create(
+    user: user,
+    story_level: story_levels_array.find{|story_level| story_level.map_node == index},
+    status: "completed",
+    enemy: Enemy.all.sample
+  )
+  FightQuestion.create(
+    fight: fight,
+    question: Question.all.sample,
+    selected_index: rand(0..3)
+  )
+end
+  #Bob5
+  user = User.create(
+    email: "bob@user5",
+    password: "123456",
+    password_confirmation: "123456",
+    level: 5,
+    experience_points: 580,
+    character_name: "Betty",
   )
 
 story_levels_array = StoryLevel.all  
