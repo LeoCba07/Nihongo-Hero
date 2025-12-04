@@ -1,1 +1,11 @@
 <%= @question.question %>
+<% if @data && @data["mp3StreamingUrl"] %>
+  <button class="audio-btn" data-action="click->audio#toggle" data-audio-target="button">
+    <i class="fa-solid fa-volume-high"></i>
+  </button>
+  <%= audio_tag @question_audio["mp3StreamingUrl"], data: { audio_target: "player" }, class: "d-none" %>
+<% else %>
+  <button class="audio-btn audio-btn-disabled" disabled>
+    <i class="fa-solid fa-volume-xmark"></i>
+  </button>
+<% end %>

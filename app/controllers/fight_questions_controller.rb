@@ -22,7 +22,7 @@ class FightQuestionsController < ApplicationController
       .map do |q|
         q.question_id
       end.uniq
-    
+
     # HARDCODING the questions for fight 9 and 10. Remove after Pitch
     if @fight.story_level.id == 9
       if @fight.fight_questions.length == 0
@@ -86,6 +86,9 @@ class FightQuestionsController < ApplicationController
     @damage_multiplier = calculate_damage_multiplier
     @player_damage = BASE_PLAYER_DAMAGE * @damage_multiplier
     @enemy_damage = BASE_ENEMY_DAMAGE
+
+    vvs = VoiceVoxService.new(ENV["VOICE_VOX_APIKEY"])
+    @question_audio = vvs.synthesize(@question.question.gsub(/_+を?/, "　なになにを"))
   end
 
   def update
