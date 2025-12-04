@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = current_user
+    @global_rank = User.where('level > ?', @user.level).count + 1
 
     # Calculate how many levels the user has completed
     if @user.fights.where(status: "completed").last&.story_level_id
@@ -61,7 +62,7 @@ class UsersController < ApplicationController
 
   def add_friend
     # The identifier (character name) is passed directly via params from the form
-    char_name = params[:identifier] 
+    char_name = params[:identifier]
     friend_user = User.find_by(character_name: char_name)
 
     # --- VALIDATIONS ---
@@ -83,7 +84,7 @@ class UsersController < ApplicationController
       return
     end
     # --- END VALIDATIONS ---
-    
+
     # 2. Create the new friendship (current_user is the initiator)
     # This uses the 'friendships' association defined in the User model.
     @friendship = Friendship.new(user_id: current_user.id, friend_user_id: friend_user.id )
