@@ -1,25 +1,25 @@
 [
   {
     "type": "grammar",
-    "question": "彼は会社を＿＿て、新しい仕事を始めた。",
+    "question": "彼は会社を____て、新しい仕事を始めた。",
     "answers": ["やめ", "とめ", "さめ", "きめ"],
     "correct_index": 0
   },
   {
     "type": "grammar",
-    "question": "雨が降りそうだから、傘を＿＿ほうがいい。",
+    "question": "雨が降りそうだから、傘を____ほうがいい。",
     "answers": ["持っちゃった", "持った", "持って", "持ち"],
     "correct_index": 1
   },
   {
     "type": "grammar",
-    "question": "彼女は日本語が上手に＿＿ように、毎日勉強している。",
+    "question": "彼女は日本語が上手に____ように、毎日勉強している。",
     "answers": ["なる", "なった", "なり", "なって"],
     "correct_index": 0
   },
   {
     "type": "grammar",
-    "question": "この問題は難しくて、なかなか＿＿が出ない。",
+    "question": "この問題は難しくて、なかなか____が出ない。",
     "answers": ["返事", "答え", "質問", "相談"],
     "correct_index": 1
   },
@@ -31,19 +31,19 @@
   },
   {
     "type": "grammar",
-    "question": "会議の時間が＿＿になったので、お知らせします。",
+    "question": "会議の時間が____になったので、お知らせします。",
     "answers": ["変更", "交換", "移動", "変化"],
     "correct_index": 0
   },
   {
     "type": "grammar",
-    "question": "この本は子供＿＿読みやすく書かれている。",
+    "question": "この本は子供____読みやすく書かれている。",
     "answers": ["でも", "しかし", "とも", "ほど"],
     "correct_index": 0
   },
   {
     "type": "grammar",
-    "question": "彼の説明は＿＿で、よく分からなかった。",
+    "question": "彼の説明は____で、よく分からなかった。",
     "answers": ["あいまい", "はっきり", "めいかく", "ていねい"],
     "correct_index": 0
   },
