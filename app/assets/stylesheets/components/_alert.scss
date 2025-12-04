@@ -1,6 +1,20 @@
 .alert {
   position: fixed;
-  bottom: 16px;
-  right: 16px;
-  z-index: 1000;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  background: linear-gradient(135deg, $accent-gold, darken($accent-gold, 8%));
+  color: $gray-900;
+  padding: 14px 28px;
+  border-radius: $border-radius;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+  animation: slide-down 0.3s ease, fade-out 0.5s ease 2.5s forwards;
+}
+
+.alert-danger {
+  background: linear-gradient(135deg, #dc2626, #991b1b);
+  color: white;
 }
