@@ -83,7 +83,7 @@ class UsersController < ApplicationController
 
     # Check for existing friendship (outgoing or incoming)
     if current_user.friends.include?(friend_user)
-      redirect_to request.referrer || root_path, alert: "#{friend_user.character_name} is already connected with you."
+      redirect_to request.referrer || root_path, alert: "#{friend_user.character_name} is already a friend."
       return
     end
     # --- END VALIDATIONS ---
