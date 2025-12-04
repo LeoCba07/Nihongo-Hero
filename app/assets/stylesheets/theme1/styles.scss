@@ -437,6 +437,11 @@ button.btn-action {
   text-align: center;
 }
 
+// Add extra right padding when audio button is present
+.textbox-container--with-audio {
+  padding-right: 4rem;
+}
+
 .healthbar-container {
   width: 100%;
 
