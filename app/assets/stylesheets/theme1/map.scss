@@ -338,6 +338,11 @@
   writing-mode: horizontal-tb;  // force horizontal text for japanese txt
 }
 
+.node-completed.node-final .completed-story-bubble {
+  left: calc(100% + 12px);
+  max-width: calc(50vw - 100px);
+}
+
 // ===== FINAL LEVEL (Level 10) =====
 
 .node-final {
@@ -608,5 +613,12 @@
 
   .completed-story-bubble-content {
     font-size: 0.85rem;
+  }
+
+  .node-completed.node-final .completed-story-bubble {
+    left: calc(100% + 6px);
+    width: 80px;
+    max-width: calc(50vw - 85px);
+    top: 60%;
   }
 }
