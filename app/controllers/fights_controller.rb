@@ -36,7 +36,7 @@ class FightsController < ApplicationController
     @fight_questions = @fight.fight_questions
   end
 
-  def create  
+  def create
     #Oliver: Update the story level to the next higher level. If this is the first fight, start at 1
     if current_user.fights.count == 0
       @story_level = 1
