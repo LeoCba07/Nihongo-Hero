@@ -46,7 +46,7 @@ Nihongo Hero transforms language study into an RPG. Battle enemies by answering 
 
 ## Team
 
-Built by a team of 4 during Le Wagon Tokyo Batch #2123. I led the team, designed the database architecture, and implemented the combat system with animations.
+Built by a team of 4 during Le Wagon Tokyo Batch #2123.
 
 ---
 
